@@ -1,0 +1,28 @@
+{
+    "name": "salsan/chess-club",
+    "description": "Chess Club Plugin for WordPress: Effortlessly Integrate Your Chess Club's Data into Your WordPress Website",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Salsan\\ChessClub\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Salvatore Santagati",
+            "email": "me@salsan.dev"
+        }
+    ],
+    "require": {
+        "salsan/utils": "dev-main",
+        "salsan/clubs": "dev-main",
+        "salsan/members": "dev-main"     
+    },
+    "config": {
+        "vendor-dir": "src/vendor"    
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7"
+    }
+}
