@@ -1,0 +1,31 @@
+{
+  "name": "chess-club",
+  "version": "1.0.0",
+  "description": "Chess Club Plugin for WordPress: Effortlessly Integrate Your Chess Club's Data into Your WordPress Website.",
+  "main": "index.js",
+  "scripts": {
+    "wp-env start": "gulp copyTask && wp-env start --xdebug=debug,develop && gulp serve",
+    "wp-env stop": "wp-env stop",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salsan/Chess-Club.git"
+  },
+  "keywords": [
+    "chess",
+    "wordpress",
+    "plugin",
+    "federscacchi"
+  ],
+  "author": "Salvatore Santagati",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/salsan/Chess-Club/issues"
+  },
+  "homepage": "https://github.com/salsan/Chess-Club#readme",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "gulp": "^4.0.2"
+  }
+}
