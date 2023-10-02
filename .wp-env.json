@@ -1,0 +1,8 @@
+{
+    "plugins": [
+      "./dist",
+      "https://downloads.wordpress.org/plugin/bold-page-builder.zip"
+    ],
+    "phpVersion" : "8.1"
+  }
+  
