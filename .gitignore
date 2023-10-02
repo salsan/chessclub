@@ -6,3 +6,6 @@ node_modules/
 
 # Code Dev
 dist/*
+
+# Snyk (https://snyk.io) policy file
+.snyk
