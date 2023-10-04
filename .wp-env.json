@@ -1,8 +1,11 @@
 {
+	  "core": "WordPress/WordPress#6.3.1",
     "plugins": [
-      "./dist",
+      "./src",
       "https://downloads.wordpress.org/plugin/bold-page-builder.zip"
     ],
-    "phpVersion" : "8.1"
+    "phpVersion" : "8.1",
+		"config": {
+			"WP_DEBUG_DISPLAY": true
+		}
   }
-  
