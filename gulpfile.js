@@ -27,10 +27,12 @@ function copyTask() {
 }
 
 function watchTask() {
-	watch(["src/**/*.php"], series(copyTask, reload));
+	// watch(["src/**/*.php"], series(copyTask, reload));
+	watch(["src/**/*.php"], series(reload));
 }
 
-exports.default = series(copyTask, serve, watchTask);
+// exports.default = series(copyTask, serve, watchTask);
+exports.default = series(serve, watchTask);
 exports.copyTask = copyTask;
 exports.serve = serve;
 exports.watchTask = watchTask;
