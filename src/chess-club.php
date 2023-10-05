@@ -26,47 +26,17 @@ if ( file_exists( realpath( __DIR__ . '/vendor/autoload.php' ) ) ) {
 	require_once realpath( __DIR__ . '/vendor/autoload.php' );
 }
 
-use Salsan\Members;
+require_once __DIR__ . '/includes/shortcodes/number-members.php';
+require_once __DIR__ . '/includes/shortcodes/number-members-total.php';
 
-/**
- * Return total number of members of club for year.
- *
- * @param array $atts Array contain value for query.
- *
- *  $params = [
- *      'id'   => (integer) id chess club on federation. Required.
- *      'anno' => (date)  select year of subscription. Required.
- *      'type' => ('total', 'rookie') all is total members of club, rookie count only new member. Required.
- *
- * @return int
- */
-function shortcode_cc_number_members( $atts ) {
-
-	$params = shortcode_atts(
-		array(
-			'id'   => '',
-			'year' => '',
-			'type' => '',
-		),
-		$atts
-	);
-
-	$query = new Members\Query(
-		array(
-			'clubId'         => $params['id'],
-			'membershipYear' => $params['year'],
-		)
-	);
-
-	return sanitize_text_field( $query->getNumber()[ $params['type'] ] );
-}
 
 /**
  *  Inizialization shortcode
  *
  * @return void  */
-function init_shortcode() {
-	add_shortcode( 'cc_number_members', 'chessclub\shortcode_cc_number_members' );
+function init_shortcode(): void {
+	add_shortcode( 'cc_number_members', 'chessclub\includes\shortcodes\shortcode_cc_number_members' );
+	add_shortcode( 'cc_number_members_total', 'chessclub\includes\shortcodes\shortcode_cc_number_members_total' );
 }
 
 add_action( 'init', 'chessclub\init_shortcode' );
