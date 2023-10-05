@@ -14,12 +14,13 @@ use Salsan\Members;
 /**
  * Return total number of members of club for year.
  *
- * @param array $atts Array contain value for query.
+ *  @param array $atts Array contain value for query.
  *
  *  $params = [
  *      'id'   => (integer) id chess club on federation. Required.
  *      'anno' => (date)  select year of subscription. Required.
  *      'type' => ('total', 'rookie') all is total members of club, rookie count only new member. Required.
+ *  ].
  *
  * @return string
  */

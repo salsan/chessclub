@@ -17,6 +17,7 @@ namespace chessclub\includes\shortcodes;
  *  $params = [
  *      'id'   => (integer) id chess club on federation. Required.
  *      'year' => (integer) year of membership. Required.
+ * ].
  *
  * @return string
  */
