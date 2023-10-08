@@ -26,19 +26,25 @@ if ( file_exists( realpath( __DIR__ . '/vendor/autoload.php' ) ) ) {
 	require_once realpath( __DIR__ . '/vendor/autoload.php' );
 }
 
-require_once __DIR__ . '/includes/shortcodes/number-members.php';
-require_once __DIR__ . '/includes/shortcodes/number-members-total.php';
-require_once __DIR__ . '/includes/shortcodes/number-members-rookie.php';
-
-
 /**
- *  Inizialization shortcode
+ *  Inizialization shortcodes
  *
  * @return void  */
 function init_shortcode(): void {
-	add_shortcode( 'cc_number_members', 'Salsan\Chessclub\Includes\Shortcodes\shortcode_cc_number_members' );
-	add_shortcode( 'cc_number_members_total', 'Salsan\Chessclub\Includes\Shortcodes\shortcode_cc_number_members_total' );
-	add_shortcode( 'cc_number_members_rookie', 'Salsan\Chessclub\Includes\Shortcodes\shortcode_cc_number_members_rokie' );
+
+	$shortcodes = array(
+		'number_members',
+		'number_members_total',
+		'number_members_rookie',
+	);
+
+	foreach ( $shortcodes as $shortcode ) {
+		if ( ! shortcode_exists( 'cc_' . $shortcode ) ) {
+			require_once __DIR__ . '/includes/shortcodes/' . str_replace( '_', '-', $shortcode ) . '.php';
+
+			add_shortcode( 'cc_' . $shortcode, __NAMESPACE__ . '\Includes\Shortcodes\\shortcode_cc_' . $shortcode );
+		}
+	}
 }
 
 add_action( 'init', 'Salsan\Chessclub\init_shortcode' );
