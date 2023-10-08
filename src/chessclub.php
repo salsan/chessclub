@@ -16,7 +16,7 @@
  * @package ChessClub
  */
 
-namespace chessclub;
+namespace Salsan\Chessclub;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;   // Exit if accessed directly!
@@ -28,6 +28,7 @@ if ( file_exists( realpath( __DIR__ . '/vendor/autoload.php' ) ) ) {
 
 require_once __DIR__ . '/includes/shortcodes/number-members.php';
 require_once __DIR__ . '/includes/shortcodes/number-members-total.php';
+require_once __DIR__ . '/includes/shortcodes/number-members-rookie.php';
 
 
 /**
@@ -35,8 +36,9 @@ require_once __DIR__ . '/includes/shortcodes/number-members-total.php';
  *
  * @return void  */
 function init_shortcode(): void {
-	add_shortcode( 'cc_number_members', 'chessclub\includes\shortcodes\shortcode_cc_number_members' );
-	add_shortcode( 'cc_number_members_total', 'chessclub\includes\shortcodes\shortcode_cc_number_members_total' );
+	add_shortcode( 'cc_number_members', 'Salsan\Chessclub\Includes\Shortcodes\shortcode_cc_number_members' );
+	add_shortcode( 'cc_number_members_total', 'Salsan\Chessclub\Includes\Shortcodes\shortcode_cc_number_members_total' );
+	add_shortcode( 'cc_number_members_rookie', 'Salsan\Chessclub\Includes\Shortcodes\shortcode_cc_number_members_rokie' );
 }
 
-add_action( 'init', 'chessclub\init_shortcode' );
+add_action( 'init', 'Salsan\Chessclub\init_shortcode' );

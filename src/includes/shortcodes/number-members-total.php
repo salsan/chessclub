@@ -2,12 +2,12 @@
 /**
  * Shortcode Chess Members of Club.
  *
- * @package ChessClub
+ * @package Salsan/Chessclub
  */
 
 declare(strict_types=1);
 
-namespace chessclub\includes\shortcodes;
+namespace Salsan\Chessclub\includes\shortcodes;
 
 /**
  * Return total number of members of club for year.

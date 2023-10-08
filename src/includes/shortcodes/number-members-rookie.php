@@ -1,13 +1,13 @@
 <?php
 /**
- * Shortcode Chess Members of Club.
+ * Shortcode number of rookie on Chess Club.
  *
- * @package ChessClub
+ * @package Salsan/Chessclub
  */
 
 declare(strict_types=1);
 
-namespace chessclub\includes\shortcodes;
+namespace Salsan\Chessclub\includes\shortcodes;
 
 /**
  * Return rookie number of members of club for year.
