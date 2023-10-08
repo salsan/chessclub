@@ -36,6 +36,8 @@ function init_shortcode(): void {
 		'number_members',
 		'number_members_total',
 		'number_members_rookie',
+		'info_club_phone_number',
+		'info_club_website',
 	);
 
 	foreach ( $shortcodes as $shortcode ) {

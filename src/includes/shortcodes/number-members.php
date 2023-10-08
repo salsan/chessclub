@@ -40,7 +40,7 @@ function shortcode_cc_number_members( $atts ): string {
 			'clubId'         => $params['id'],
 			'membershipYear' => $params['year'],
 		)
-	) ?? '0';
+	);
 
 	return sanitize_text_field( $query->getNumber()[ $params['type'] ] );
 }
