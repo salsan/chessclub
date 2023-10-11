@@ -7,13 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Salsan\Chessclub\includes\shortcodes;
+namespace Salsan\Chessclub\Includes\Shortcodes;
 
-use Salsan\Clubs;
-
-class Info_Club_Website {
+class Website {
 	public function __construct() {
-		add_shortcode( 'cc_info_club_website', array( $this, 'shortcode_cc_info_club_website' ) );
+		add_shortcode( 'cc_website', array( $this, 'shortcode_cc_website' ) );
 	}
 	/**
 	 * Return total number of members of club for year.
@@ -26,7 +24,7 @@ class Info_Club_Website {
 	 *
 	 * @return string
 	 */
-	public function shortcode_cc_info_club_website( $atts ): string {
+	public function shortcode_cc_website( $atts ): string {
 		$params = shortcode_atts(
 			array(
 				'id' => '',
@@ -34,7 +32,7 @@ class Info_Club_Website {
 			$atts
 		);
 
-		$query = new Clubs\Query(
+		$query = new \Salsan\Clubs\Query(
 			array(
 				'clubId' => $params['id'],
 			)

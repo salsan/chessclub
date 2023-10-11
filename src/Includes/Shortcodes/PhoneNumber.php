@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Salsan\Chessclub\includes\shortcodes;
+namespace Salsan\Chessclub\Includes\Shortcodes;
 
-use Salsan\Clubs;
-
-class Info_Club_Phone_Number {
+class PhoneNumber {
 
 	public function __construct() {
-		add_shortcode( 'cc_info_club_phone_number', array( $this, 'shortcode_cc_info_club_phone_number' ) );
+		add_shortcode( 'cc_phone_number', array( $this, 'shortcode_cc_phone_number' ) );
 	}
 
 	/**
@@ -19,7 +17,7 @@ class Info_Club_Phone_Number {
 	 *
 	 * @return string
 	 */
-	public function shortcode_cc_info_club_phone_number( $atts ): string {
+	public function shortcode_cc_phone_number( $atts ): string {
 
 		$params = shortcode_atts(
 			array(
@@ -28,7 +26,7 @@ class Info_Club_Phone_Number {
 			$atts
 		);
 
-		$query = new Clubs\Query(
+		$query = new \Salsan\Clubs\Query(
 			array(
 				'clubId' => $params['id'],
 			)
