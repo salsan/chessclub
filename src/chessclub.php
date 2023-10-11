@@ -10,11 +10,13 @@
  * Author URI:        https://salsan.dev/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       chess-club
+ * Text Domain:       chessclub
  * Domain Path:       /languages
  *
  * @package ChessClub
  */
+
+declare(strict_types=1);
 
 namespace Salsan\Chessclub;
 
@@ -30,23 +32,10 @@ if ( file_exists( realpath( __DIR__ . '/vendor/autoload.php' ) ) ) {
  *  Inizialization shortcodes
  *
  * @return void  */
-function init_shortcode(): void {
-
-	$shortcodes = array(
-		'number_members',
-		'number_members_total',
-		'number_members_rookie',
-		'info_club_phone_number',
-		'info_club_website',
-	);
-
-	foreach ( $shortcodes as $shortcode ) {
-		if ( ! shortcode_exists( 'cc_' . $shortcode ) ) {
-			require_once __DIR__ . '/includes/shortcodes/' . str_replace( '_', '-', $shortcode ) . '.php';
-
-			add_shortcode( 'cc_' . $shortcode, __NAMESPACE__ . '\Includes\Shortcodes\\shortcode_cc_' . $shortcode );
-		}
+function init(): void {
+	if ( class_exists( 'Salsan\Chessclub\Includes\Shortcodes\Init' ) ) {
+		Includes\Shortcodes\Init::add_shortcode();
 	}
 }
 
-add_action( 'init', 'Salsan\Chessclub\init_shortcode' );
+add_action( 'init', 'Salsan\Chessclub\init' );
