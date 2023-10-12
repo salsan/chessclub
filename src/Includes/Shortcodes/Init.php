@@ -32,7 +32,7 @@ final class Init {
 	 *
 	 * @return void
 	 */
-	public static function add_shortcode() {
+	public static function init() {
 		foreach ( self::get_shortcodes() as $shortcode ) {
 			new $shortcode();
 		}
