@@ -5,7 +5,7 @@ const server = require("browser-sync").create();
 function serve(cb) {
 	server.init(
 		{
-			browser: "chrome",
+			open: false,
 
 			proxy: {
 				target: "http://localhost:8888",
