@@ -7,11 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Salsan\Chessclub\includes\shortcodes;
+namespace Salsan\Chessclub\Includes\Shortcodes;
 
-use Salsan\Members;
-
-class Number_Members {
+class NumberMembers {
 	public function __construct() {
 		add_shortcode( 'cc_number_members', array( $this, 'shortcode_cc_number_members' ) );
 	}
@@ -39,7 +37,7 @@ class Number_Members {
 			$atts
 		);
 
-		$query = new Members\Query(
+		$query = new \Salsan\Members\Query(
 			array(
 				'clubId'         => $params['id'],
 				'membershipYear' => $params['year'],

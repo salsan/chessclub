@@ -13,11 +13,11 @@ final class Init {
 	 */
 	public static function get_shortcodes() {
 		return array(
-			Number_Members::class,
-			Number_Members_Total::class,
-			Number_Members_Rookie::class,
-			Info_Club_Phone_Number::class,
-			Info_Club_Website::class,
+			NumberMembers::class,
+			NumberMembersTotal::class,
+			NumberMembersRookie::class,
+			PhoneNumber::class,
+			Website::class,
 		);
 	}
 

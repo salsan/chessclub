@@ -1,21 +1,22 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 
 /**
- * Shortcode number of rookie on Chess Club.
+ * Shortcode Chess Members of Club.
  *
  * @package Salsan/Chessclub
  */
 
 declare(strict_types=1);
 
-namespace Salsan\Chessclub\includes\shortcodes;
+namespace Salsan\Chessclub\Includes\Shortcodes;
 
-class Number_Members_Rookie {
+class NumberMembersTotal {
+
 	public function __construct() {
-		add_shortcode( 'cc_number_members_rookie', array( $this, 'shortcode_cc_number_members_rookie' ) );
+		add_shortcode( 'cc_number_members_total', array( $this, 'shortcode_cc_number_members_total' ) );
 	}
 	/**
-	 * Return rookie number of members of club for year.
+	 * Return total number of members of club for year.
 	 *
 	 * @param array $atts Array contain value for query.
 	 *
@@ -26,7 +27,7 @@ class Number_Members_Rookie {
 	 *
 	 * @return string
 	 */
-	public function shortcode_cc_number_members_rookie( $atts ): string {
+	public function shortcode_cc_number_members_total( $atts ): string {
 
 		$params = shortcode_atts(
 			array(
@@ -36,7 +37,7 @@ class Number_Members_Rookie {
 			$atts
 		);
 
-		$result = do_shortcode( '[cc_number_members id="' . $params['id'] . '" year="' . $params['year'] . '" type="rookie"]' );
+		$result = do_shortcode( '[cc_number_members id="' . $params['id'] . '" year="' . $params['year'] . '" type="total"]' );
 
 		return $result;
 	}
