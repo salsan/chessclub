@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Shortcodes;
 
+/**
+ *
+ * Inizialization of shortcodes
+ *
+ * @package Salsan\Chessclub\Includes\Shortcodes
+ */
 final class Init {
 
 	/**
@@ -23,6 +29,8 @@ final class Init {
 
 	/**
 	 * Loop through the shortcodes, initialize them.
+	 *
+	 * @return void
 	 */
 	public static function add_shortcode() {
 		foreach ( self::get_shortcodes() as $shortcode ) {

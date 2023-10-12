@@ -1,20 +1,24 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
-/**
- * Shortcode website club.
- *
- * @package Salsan/Chessclub
- */
 
 declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Shortcodes;
 
+/**
+ *  WordPress Shortcode for Chess Club
+ *
+ * @package Salsan\Chessclub\Includes\Shortcodes
+ */
 class Website {
+	/**
+	 * Inizilization shortcode website club.
+	 *
+	 * @return void  */
 	public function __construct() {
 		add_shortcode( 'cc_website', array( $this, 'shortcode_cc_website' ) );
 	}
 	/**
-	 * Return total number of members of club for year.
+	 *  Shortcode website club.
 	 *
 	 *  @param array $atts Array contain value for query.
 	 *

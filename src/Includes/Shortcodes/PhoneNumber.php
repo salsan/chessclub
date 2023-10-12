@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Shortcodes;
 
+/**
+ *  WordPress Shortcode for Chess Club
+ *
+ * @package Salsan\Chessclub\Includes\Shortcodes
+ */
 class PhoneNumber {
-
+	/**
+	 *
+	 * Inizilization shortcode phone number club.
+	 *
+	 * @return void  */
 	public function __construct() {
 		add_shortcode( 'cc_phone_number', array( $this, 'shortcode_cc_phone_number' ) );
 	}

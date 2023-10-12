@@ -1,22 +1,26 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 
-/**
- * Shortcode Chess Members of Club.
- *
- * @package Salsan/Chessclub
- */
-
 declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Shortcodes;
 
+/**
+ *  WordPress Shortcode count number of membership on Chess Club
+ *
+ * @package Salsan\Chessclub\Includes\Shortcodes
+ */
 class NumberMembersTotal {
-
+	/**
+	 *
+	 * Inizilization shortcode count number of membership on Chess Club.
+	 *
+	 * @return void  */
 	public function __construct() {
 		add_shortcode( 'cc_number_members_total', array( $this, 'shortcode_cc_number_members_total' ) );
 	}
+
 	/**
-	 * Return total number of members of club for year.
+	 * Shortcode total number of members of club for year.
 	 *
 	 * @param array $atts Array contain value for query.
 	 *
