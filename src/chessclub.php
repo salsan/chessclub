@@ -38,6 +38,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;   // Exit if accessed directly!
 }
 
+define( 'MY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
 if ( file_exists( realpath( __DIR__ . '/vendor/autoload.php' ) ) ) {
 	require_once realpath( __DIR__ . '/vendor/autoload.php' );
 }
