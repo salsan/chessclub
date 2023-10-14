@@ -18,13 +18,13 @@ class MenuPage {
 			'menu_title' => 'Chess Club',
 			'capability' => 'manage_options',
 			'menu_slug'  => 'chessclub_menu',
-			'callback'   => array( $this, 'addPage' ),
+			'callback'   => '',
 			'icon_url'   => 'dashicons-groups',
 		);
 
-		add_action( 'admin_menu', array( $this, 'addMenuPage' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}
-	public function addMenuPage() {
+	public function add_menu() {
 		add_menu_page(
 			$this->menu_page_settings['page_title'],
 			$this->menu_page_settings['menu_title'],
@@ -35,7 +35,7 @@ class MenuPage {
 		);
 	}
 
-	public function addPage() {
+	public function add_page() {
 		return require_once "$this->plugin_path/admin/main.php";
 	}
 }
