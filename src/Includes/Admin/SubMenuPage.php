@@ -90,9 +90,9 @@ class SubMenuPage {
 			$club_id = array_keys( $club_info );
 			$club    = array( 'club' => $club_info[ $club_id[0] ] );
 			$club    = array_merge( array( 'clubId' => $club_id[0] ), $club['club'] );
-		}
 
-		update_option( 'chessclub_settings', $club );
+			update_option( 'chessclub_settings', $club );
+		}
 	}
 
 	public function chessclub_id_callback() {
