@@ -59,7 +59,7 @@ class SubMenuPage {
 
 	public function register_settings() {
 
-		register_setting( 'chessclub_settings', 'chessclub_settings' );
+		register_setting( 'chessclub_settings', 'chessclub_settings', array( $this, 'init_chessclub' ) );
 
 		add_settings_section(
 			'settings_section',
@@ -71,39 +71,47 @@ class SubMenuPage {
 		add_settings_field(
 			'chessclub_settings',
 			'Club',
-			array( $this, 'chessclub_id_field_callback' ),
+			array( $this, 'chessclub_setup' ),
 			'chessclub_menu',
 			'settings_section',
 		);
-
-		add_option( 'chessclub_settings', '0' );
-		add_action( 'update_option_chessclub_settings', array( $this, 'init_chessclub' ), 10, 2 );
 	}
 
-	public function init_chessclub() {
-		$settings = get_option( 'chessclub_settings' );
-		$query    = new \Salsan\Clubs\Query( array( 'clubId' => $settings['clubId'] ) );
+	public function init_chessclub( $id ) {
+		$query = new \Salsan\Clubs\Query( array( 'clubId' => $id ) );
 
 		$club_info = $query->getInfo();
 
-		if ( is_array( $club_info ) ) {
-			$club_id = array_keys( $club_info );
-			$club    = array( 'club' => $club_info[ $club_id[0] ] );
-			$club    = array_merge( array( 'clubId' => $club_id[0] ), $club['club'] );
+		if ( count( $club_info ) > 0 ) {
 
-			update_option( 'chessclub_settings', $club );
+			$current_year = date( 'Y' );
+			$members      = new \Salsan\Members\Query(
+				array(
+					'clubId'         => $id,
+					'membershipYear' => $current_year,
+				)
+			);
+
+			$list = $members->getList();
+
+			$club = array_merge( array( 'clubId' => $id ), $club_info[ $id ] );
+			array_push( $club, array( 'members' => $list ) );
+
+			return $club;
 		}
+
+		return array( 'clubId' => $id );
 	}
 
 	public function chessclub_id_callback() {
 		echo 'Configure your account';
 	}
 
-	public function chessclub_id_field_callback() {
+	public function chessclub_setup() {
 		$list           = new \Salsan\Clubs\Listing();
 		$selected_value = get_option( 'chessclub_settings', array() );
 
-		echo '<select id="chessclub_settings" name="chessclub_settings[clubId]">';
+		echo '<select id="chessclub_settings" name="chessclub_settings">';
 		echo '<option value="">Select Club</option>';
 
 		foreach ( $list->clubs() as $index => $club ) {
