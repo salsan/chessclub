@@ -58,13 +58,8 @@ class SubMenuPage {
 	}
 
 	public function register_settings() {
-		$args = array(
-			'type'              => 'string',
-			'sanitize_callback' => 'sanitize_text_field',
-			'default'           => null,
-		);
 
-		register_setting( 'chessclub_settings', 'chessclub_settings', $args );
+		register_setting( 'chessclub_settings', 'chessclub_settings' );
 
 		add_settings_section(
 			'settings_section',
@@ -80,6 +75,24 @@ class SubMenuPage {
 			'chessclub_menu',
 			'settings_section',
 		);
+
+		add_option( 'chessclub_settings', '0' );
+		add_action( 'update_option_chessclub_settings', array( $this, 'init_chessclub' ), 10, 2 );
+	}
+
+	public function init_chessclub() {
+		$settings = get_option( 'chessclub_settings' );
+		$query    = new \Salsan\Clubs\Query( array( 'clubId' => $settings['clubId'] ) );
+
+		$club_info = $query->getInfo();
+
+		if ( is_array( $club_info ) ) {
+			$club_id = array_keys( $club_info );
+			$club    = array( 'club' => $club_info[ $club_id[0] ] );
+			$club    = array_merge( array( 'clubId' => $club_id[0] ), $club['club'] );
+		}
+
+		update_option( 'chessclub_settings', $club );
 	}
 
 	public function chessclub_id_callback() {
@@ -87,7 +100,18 @@ class SubMenuPage {
 	}
 
 	public function chessclub_id_field_callback() {
-		$value = get_option( 'chessclub_settings' );
-		echo '<input type="text" name="chessclub_settings" value="' . esc_attr( $value ) . '" />';
+		$list           = new \Salsan\Clubs\Listing();
+		$selected_value = get_option( 'chessclub_settings', array() );
+
+		echo '<select id="chessclub_settings" name="chessclub_settings[clubId]">';
+		echo '<option value="">Select Club</option>';
+
+		foreach ( $list->clubs() as $index => $club ) {
+			$selected = is_array( $selected_value ) ? ( ( $index == $selected_value['clubId'] ) ? 'selected' : '' ) : '';
+
+			echo '<option value="' . $index . '" ' . $selected . '>' . $index . ' - ' . $club . '</option>';
+		}
+
+		echo '</select>';
 	}
 }
