@@ -78,29 +78,39 @@ class SubMenuPage {
 	}
 
 	public function init_chessclub( $id ) {
-		$query = new \Salsan\Clubs\Query( array( 'clubId' => $id ) );
 
-		$club_info = $query->getInfo();
+		$data         = new \Salsan\Clubs\Form();
+		$current_year = max( $data->getYears() );
+		$first_year   = min( $data->getYears() );
 
-		if ( count( $club_info ) > 0 ) {
+		$club = array( 'clubId' => $id );
 
-			$current_year = date( 'Y' );
-			$members      = new \Salsan\Members\Query(
+		for ( $year = $current_year; $year >= $first_year; $year-- ) {
+			$query     = new \Salsan\Clubs\Query(
 				array(
-					'clubId'         => $id,
-					'membershipYear' => $current_year,
+					'clubId' => $id,
+					'year'   => $year,
 				)
 			);
+			$club_info = $query->getInfo();
 
-			$list = $members->getList();
+			if ( count( $club_info ) > 0 ) {
+				$members = new \Salsan\Members\Query(
+					array(
+						'clubId'         => $id,
+						'membershipYear' => $year,
+					)
+				);
 
-			$club = array_merge( array( 'clubId' => $id ), $club_info[ $id ] );
-			array_push( $club, array( 'members' => $list ) );
+				$list = $members->getList();
+				$club = array_merge( $club, $club_info[ $id ] );
+				array_push( $club, array( 'members' => $list ) );
 
-			return $club;
+				return $club;
+			}
 		}
 
-		return array( 'clubId' => $id );
+		return $club;
 	}
 
 	public function chessclub_id_callback() {
