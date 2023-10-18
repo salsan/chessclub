@@ -7,6 +7,7 @@ namespace Salsan\Chessclub\Includes\Admin;
 class SubMenuPage {
 	private $submenu_page_settings;
 	private $plugin_path;
+	private $plugin_url;
 
 	public function __construct() {
 
@@ -33,6 +34,7 @@ class SubMenuPage {
 
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_custom_script' ) );
 	}
 
 	public function add_menu() {
@@ -118,6 +120,7 @@ class SubMenuPage {
 	}
 
 	public function chessclub_setup() {
+
 		$list           = new \Salsan\Clubs\Listing();
 		$selected_value = get_option( 'chessclub_settings', array() );
 
@@ -131,5 +134,10 @@ class SubMenuPage {
 		}
 
 		echo '</select>';
+	}
+
+	public function load_custom_script() {
+		$this->plugin_url = MY_PLUGIN_URL;
+		wp_enqueue_script( 'form-js', $this->plugin_url . '/admin/js/form.js' );
 	}
 }

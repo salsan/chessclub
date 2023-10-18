@@ -39,6 +39,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'MY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'MY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 
 if ( file_exists( realpath( __DIR__ . '/vendor/autoload.php' ) ) ) {
 	require_once realpath( __DIR__ . '/vendor/autoload.php' );
