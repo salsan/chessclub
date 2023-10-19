@@ -19,8 +19,10 @@ final class Init {
 	 */
 	public static function get_settings() {
 		return array(
-			MenuPage::class,
-			SubMenuPage::class,
+			Menu::class,
+			Sections::class,
+			Fields::class,
+			// SubMenuPage::class,
 		);
 	}
 
@@ -31,7 +33,10 @@ final class Init {
 	 */
 	public static function init() {
 		foreach ( self::get_settings() as $setting ) {
-			new $setting();
+			$item = new $setting();
+			if ( method_exists($item,'init')){
+				$item->init();
+			}
 		}
 	}
 }

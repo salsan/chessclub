@@ -1,6 +1,6 @@
 <?php declare(strict_types=1); ?>
 <div class="wrap">
-	<h2>Chess Club Settings</h2>
+	<h2>Chess Club</h2>
 	<?php settings_errors(); ?>
 
 	<form method="post" action="options.php">
