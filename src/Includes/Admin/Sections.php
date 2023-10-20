@@ -7,8 +7,6 @@ namespace Salsan\Chessclub\Includes\Admin;
 class Sections {
 
 	private $sections;
-	private $fields;
-
 
 	public function __construct() {
 		$this->sections = array(

@@ -22,7 +22,8 @@ final class Init {
 			Menu::class,
 			Sections::class,
 			Fields::class,
-			// SubMenuPage::class,
+			Register::class,
+			Enqueue::class,
 		);
 	}
 
@@ -33,9 +34,12 @@ final class Init {
 	 */
 	public static function init() {
 		foreach ( self::get_settings() as $setting ) {
-			$item = new $setting();
-			if ( method_exists($item,'init')){
-				$item->init();
+			if ( ! function_exists( $setting ) ) {
+				$item = new $setting();
+
+				if ( method_exists( $item, 'init' ) ) {
+					$item->init();
+				}
 			}
 		}
 	}

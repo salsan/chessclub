@@ -31,8 +31,10 @@ final class Init {
 	 */
 	public static function init() {
 		foreach ( self::get_services() as $service ) {
-			$class = 'Salsan\\Chessclub\\Includes\\' . $service . '\\Init';
-			$class::init();
+			if ( ! function_exists( $service ) ) {
+				$class = 'Salsan\\Chessclub\\Includes\\' . $service . '\\Init';
+				$class::init();
+			}
 		}
 	}
 }

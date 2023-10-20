@@ -17,25 +17,24 @@ final class Pages {
 
 	public static function field_settings_select_club() {
 
-		$list           = new \Salsan\Clubs\Listing();
-		$selected_value = get_option( 'chessclub_settings', array() );
+		$selected_value = ( get_option( 'chessclub_settings' ) !== false )
+						? get_option( 'chessclub_settings' )
+						: array( 'clubId' => 'IT' );
 
-		echo '<select id="chessclub_settings" name="chessclub_settings">';
-		echo '<option value="">Select Club</option>';
+		$nation = substr( $selected_value['clubId'], 0, 2 );
 
-		foreach ( $list->clubs() as $index => $club ) {
-			$selected = is_array( $selected_value ) ? ( ( $index == $selected_value['clubId'] ) ? 'selected' : '' ) : '';
-
-			echo '<option value="' . $index . '" ' . $selected . '>' . $index . ' - ' . $club . '</option>';
+		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+		switch ( $nation ) {
+			case 'IT':
+				$list = new \Salsan\Clubs\Listing();
+				require_once self::PLUGIN_PATH . '/admin/select_club_it.php';
+			default:
+				break;
+				return;
 		}
-
-		echo '</select>';
 	}
-
 
 	public static function page_about() {
 		return require_once self::PLUGIN_PATH . '/admin/about.php';
 	}
-
 }
-
