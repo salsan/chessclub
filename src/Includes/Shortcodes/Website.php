@@ -39,7 +39,7 @@ class Website {
 			$atts
 		);
 
-		if ( $data !== false ) {
+		if ( false !== $date ) {
 			$club_id = array_keys( $data )['0'];
 			$year    = $params['year'] ?: max( array_keys( $data[ $club_id ] ) );
 			$website = $data[ $club_id ][ $year ]['info']['website'] ?? '';

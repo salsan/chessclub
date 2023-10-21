@@ -40,7 +40,7 @@ class PhoneNumber {
 			$atts
 		);
 
-		if ( $data !== false ) {
+		if ( false !== $data ) {
 			$club_id      = array_keys( $data )['0'];
 			$year         = $params['year'] ?: max( array_keys( $data[ $club_id ] ) );
 			$phone_number = $data[ $club_id ][ $year ]['info']['contact']['tel'] ?? '';
