@@ -22,10 +22,7 @@ class PhoneNumber {
 	/**
 	 * Shortcode telephone number club.
 	 *
-	 *  $params = [
-	 *      'year' => (date)  select year of subscription. Optional
-	 *  ].
-	 *
+	 * @param mixed $atts shortcode attributes.
 	 * @return string
 	 */
 	public function shortcode_cc_phone_number( $atts ): string {
@@ -42,7 +39,9 @@ class PhoneNumber {
 
 		if ( false !== $data ) {
 			$club_id      = array_keys( $data )['0'];
-			$year         = $params['year'] ?: max( array_keys( $data[ $club_id ] ) );
+			$year         = $params['year']
+							? $params['year']
+							: max( array_keys( $data[ $club_id ] ) );
 			$phone_number = $data[ $club_id ][ $year ]['info']['contact']['tel'] ?? '';
 		}
 

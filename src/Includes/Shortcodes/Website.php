@@ -13,8 +13,6 @@ class Website {
 	/**
 	 * Inizilization shortcode website club.
 	 *
-	 * @param array $atts Array contain value for query.
-	 *
 	 * @return void  */
 	public function __construct() {
 		add_shortcode( 'cc_website', array( $this, 'shortcode_cc_website' ) );
@@ -22,10 +20,7 @@ class Website {
 	/**
 	 *  Shortcode website club.
 	 *
-	 *  $params = [
-	 *      'year' => (date)  select year of subscription. Optional
-	 *  ].
-	 *
+	 * @param mixed $atts shortcode attributes.
 	 * @return string
 	 */
 	public function shortcode_cc_website( $atts ): string {
@@ -39,9 +34,11 @@ class Website {
 			$atts
 		);
 
-		if ( false !== $date ) {
+		if ( false !== $data ) {
 			$club_id = array_keys( $data )['0'];
-			$year    = $params['year'] ?: max( array_keys( $data[ $club_id ] ) );
+			$year    = $params['year']
+					? $params['year']
+					: max( array_keys( $data[ $club_id ] ) );
 			$website = $data[ $club_id ][ $year ]['info']['website'] ?? '';
 		}
 
