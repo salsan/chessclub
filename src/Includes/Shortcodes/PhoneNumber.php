@@ -22,25 +22,30 @@ class PhoneNumber {
 	/**
 	 * Shortcode telephone number club.
 	 *
-	 * @param array $atts Array contain value for query.
+	 *  $params = [
+	 *      'year' => (date)  select year of subscription. Optional
+	 *  ].
 	 *
 	 * @return string
 	 */
 	public function shortcode_cc_phone_number( $atts ): string {
 
+		$phone_number = '';
+		$data         = get_option( 'chessclub_settings' );
+
 		$params = shortcode_atts(
 			array(
-				'id' => '',
+				'year' => '',
 			),
 			$atts
 		);
 
-		$query = new \Salsan\Clubs\Query(
-			array(
-				'clubId' => $params['id'],
-			)
-		);
+		if ( $data !== false ) {
+			$club_id      = array_keys( $data )['0'];
+			$year         = $params['year'] ?: max( array_keys( $data[ $club_id ] ) );
+			$phone_number = $data[ $club_id ][ $year ]['info']['contact']['tel'] ?? '';
+		}
 
-		return sanitize_text_field( $query->getInfo()[ $params['id'] ]['contact']['tel'] );
+		return sanitize_text_field( $phone_number );
 	}
 }

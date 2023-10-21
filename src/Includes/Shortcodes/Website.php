@@ -13,6 +13,8 @@ class Website {
 	/**
 	 * Inizilization shortcode website club.
 	 *
+	 * @param array $atts Array contain value for query.
+	 *
 	 * @return void  */
 	public function __construct() {
 		add_shortcode( 'cc_website', array( $this, 'shortcode_cc_website' ) );
@@ -20,17 +22,27 @@ class Website {
 	/**
 	 *  Shortcode website club.
 	 *
+	 *  $params = [
+	 *      'year' => (date)  select year of subscription. Optional
+	 *  ].
 	 *
 	 * @return string
 	 */
-	public function shortcode_cc_website(): string {
+	public function shortcode_cc_website( $atts ): string {
 		$website = '';
 		$data    = get_option( 'chessclub_settings' );
 
+		$params = shortcode_atts(
+			array(
+				'year' => '',
+			),
+			$atts
+		);
+
 		if ( $data !== false ) {
 			$club_id = array_keys( $data )['0'];
-			$year    = max( array_keys( $data[ $club_id ] ) );
-			$website = $data[ $club_id ][ $year ]['info']['website'];
+			$year    = $params['year'] ?: max( array_keys( $data[ $club_id ] ) );
+			$website = $data[ $club_id ][ $year ]['info']['website'] ?? '';
 		}
 
 		return sanitize_text_field( $website );
