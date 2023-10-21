@@ -5,9 +5,9 @@ echo '<select id="chessclub_settings" name="chessclub_settings">';
 
 foreach ( $list->clubs() as $index => $club ) {
 	$nation_id = 'IT' . $index;
-	$selected = is_array( $selected_value ) ? ( ( $nation_id == $selected_value['clubId'] ) ? 'selected' : '' ) : '';
+	$selected  = is_array( $selected_value ) ? ( ( $nation_id == $club_id ) ? 'selected' : '' ) : '';
 
-	echo '<option value="' . $nation_id . '" ' . $selected . '>' . $index. ' - ' . $club . '</option>';
+	echo '<option value="' . $nation_id . '" ' . $selected . '>' . $index . ' - ' . $club . '</option>';
 }
 
-		echo '</select>';
+echo '</select>';

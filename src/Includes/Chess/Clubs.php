@@ -36,7 +36,8 @@ final class Clubs {
 		$current_year = max( $data->getYears() );
 		$first_year   = min( $data->getYears() );
 
-		$club = array( 'clubId' => 'IT' . $id );
+		$club    = array();
+		$nation_id = 'IT' . $id;
 
 		for ( $year = $current_year; $year >= $first_year; $year-- ) {
 			$query     = new \Salsan\Clubs\Query(
@@ -56,10 +57,11 @@ final class Clubs {
 				);
 
 				$list = $members->getList();
-				$club = array_merge( $club, $club_info[ $id ] );
-				array_push( $club, array( 'members' => $list ) );
 
-				return $club;
+				$club[ $nation_id ][ $year ] = array(
+					'info'    => $club_info[ $id ],
+					'members' => $list,
+				);
 			}
 		}
 

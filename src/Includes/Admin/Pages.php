@@ -19,9 +19,11 @@ final class Pages {
 
 		$selected_value = ( get_option( 'chessclub_settings' ) !== false )
 						? get_option( 'chessclub_settings' )
-						: array( 'clubId' => 'IT' );
+						: 'IT';
 
-		$nation = substr( $selected_value['clubId'], 0, 2 );
+		$club_id = array_keys( $selected_value )['0'];
+
+		$nation = substr( $club_id, 0, 2 );
 
 		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 		switch ( $nation ) {
