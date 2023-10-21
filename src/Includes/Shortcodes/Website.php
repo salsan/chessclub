@@ -20,28 +20,19 @@ class Website {
 	/**
 	 *  Shortcode website club.
 	 *
-	 *  @param array $atts Array contain value for query.
-	 *
-	 *  $params = [
-	 *      'id'   => (integer) id chess club on federation. Required.
-	 *  ].
 	 *
 	 * @return string
 	 */
-	public function shortcode_cc_website( $atts ): string {
-		$params = shortcode_atts(
-			array(
-				'id' => '',
-			),
-			$atts
-		);
+	public function shortcode_cc_website(): string {
+		$website = '';
+		$data    = get_option( 'chessclub_settings' );
 
-		$query = new \Salsan\Clubs\Query(
-			array(
-				'clubId' => $params['id'],
-			)
-		);
+		if ( $data !== false ) {
+			$club_id = array_keys( $data )['0'];
+			$year    = max( array_keys( $data[ $club_id ] ) );
+			$website = $data[ $club_id ][ $year ]['info']['website'];
+		}
 
-		return sanitize_text_field( $query->getInfo()[ $params['id'] ]['website'] );
+		return sanitize_text_field( $website );
 	}
 }
