@@ -24,7 +24,6 @@ class NumberMembers {
 	 *  @param array $atts Array contain value for query.
 	 *
 	 *  $params = [
-	 *      'id'   => (integer) id chess club on federation. Required.
 	 *      'year' => (date)  select year of subscription. Optional.
 	 *      'type' => ('total', 'rookie') all is total members of club, rookie count only new member. Required.
 	 *  ].
@@ -32,23 +31,25 @@ class NumberMembers {
 	 * @return string
 	 */
 	public function shortcode_cc_number_members( $atts ): string {
+		$members_count = '';
+		$data          = get_option( 'chessclub_settings' );
 
 		$params = shortcode_atts(
 			array(
-				'id'   => '',
 				'year' => '',
 				'type' => '',
 			),
 			$atts
 		);
 
-		$query = new \Salsan\Members\Query(
-			array(
-				'clubId'         => $params['id'],
-				'membershipYear' => $params['year'],
-			)
-		);
+		if ( false !== $data ) {
+			$club_id       = array_keys( $data )['0'];
+			$year          = $params['year']
+					? $params['year']
+					: max( array_keys( $data[ $club_id ] ) );
+			$members_count = $data[ $club_id ][ $year ]['stats'][ $params['type'] ] ?? '';
+		}
 
-		return sanitize_text_field( $query->getNumber()[ $params['type'] ] );
+		return sanitize_text_field( $members_count );
 	}
 }

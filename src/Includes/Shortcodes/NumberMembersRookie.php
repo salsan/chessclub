@@ -24,23 +24,29 @@ class NumberMembersRookie {
 	 * @param array $atts Array contain value for query.
 	 *
 	 *  $params = [
-	 *      'id'   => (integer) id chess club on federation. Required.
-	 *      'year' => (integer) year of membership. Required.
+	 *      'year' => (integer) year of membership. Optional.
 	 * ].
 	 *
 	 * @return string
 	 */
 	public function shortcode_cc_number_members_rookie( $atts ): string {
+		$data = get_option( 'chessclub_settings' );
 
 		$params = shortcode_atts(
 			array(
-				'id'   => '',
 				'year' => '',
 			),
 			$atts
 		);
 
-		$result = do_shortcode( '[cc_number_members id="' . $params['id'] . '" year="' . $params['year'] . '" type="rookie"]' );
+		if ( false !== $data ) {
+			$club_id = array_keys( $data )['0'];
+			$year    = $params['year']
+					? $params['year']
+					: max( array_keys( $data[ $club_id ] ) );
+		}
+
+		$result = do_shortcode( '[cc_number_members id="' . $club_id . '" year="' . $year . '" type="rookie"]' );
 
 		return $result;
 	}
