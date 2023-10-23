@@ -36,7 +36,7 @@ final class Clubs {
 		$current_year = max( $data->getYears() );
 		$first_year   = min( $data->getYears() );
 
-		$club    = array();
+		$club      = array();
 		$nation_id = 'IT' . $id;
 
 		for ( $year = $current_year; $year >= $first_year; $year-- ) {
@@ -56,11 +56,16 @@ final class Clubs {
 					)
 				);
 
-				$list = $members->getList();
+				$list                    = $members->getList();
+				list ( $total, $rookie ) = array_values( $members->getNumber() );
 
 				$club[ $nation_id ][ $year ] = array(
 					'info'    => $club_info[ $id ],
 					'members' => $list,
+					'stats'   => array(
+						'total'  => $total,
+						'rookie' => $rookie,
+					),
 				);
 			}
 		}
