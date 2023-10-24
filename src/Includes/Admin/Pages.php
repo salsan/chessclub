@@ -17,20 +17,14 @@ final class Pages {
 
 	public static function field_settings_select_club() {
 
-		$selected_value = ( get_option( 'chessclub_settings' ) !== false )
-						? get_option( 'chessclub_settings' )
-						: 'IT';
-
-		$club_id = array_keys( $selected_value )['0'];
-
-		$nation = substr( $club_id, 0, 2 );
+		$nation = \Salsan\Chessclub\Includes\Chess\Clubs::get_nation();
 
 		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 		switch ( $nation ) {
 			case 'IT':
-				$list = new \Salsan\Clubs\Listing();
-				require_once self::PLUGIN_PATH . '/admin/select_club_it.php';
+				require_once self::PLUGIN_PATH . '/admin/select-club-it.php';
 			default:
+				require_once self::PLUGIN_PATH . '/admin/select-club-it.php';
 				break;
 				return;
 		}

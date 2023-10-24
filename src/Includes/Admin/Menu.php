@@ -10,8 +10,6 @@ class Menu {
 
 	public function __construct() {
 
-		// register_setting( 'chessclub_settings', 'chessclub_settings', 'Salsan\\Chessclub\\Includes\\Chess\\Clubs::init' );
-
 		$this->plugin_path = MY_PLUGIN_PATH;
 
 		$this->menu = array(

@@ -6,12 +6,16 @@ namespace Salsan\Chessclub\Includes\Chess;
 
 /**
  *
- * Inizialization of services
+ * ChessClub services
  *
  * @package Salsan\Chessclub\Includes
  */
 final class Clubs {
 
+	/**
+	 * @param mixed $id
+	 * @return mixed
+	 */
 	static function init( $id ) {
 
 		if ( ! is_string( $id ) ) {
@@ -24,14 +28,13 @@ final class Clubs {
 		switch ( $nation ) {
 			case 'IT':
 				return self::get_clubs_it( $nation_id );
-				break;
 			default:
 				break;
-				return;
 		}
 	}
 
-	static function get_clubs_it( $id ) {
+
+	public static function get_clubs_it( $id ) {
 		$data         = new \Salsan\Clubs\Form();
 		$current_year = max( $data->getYears() );
 		$first_year   = min( $data->getYears() );
@@ -71,5 +74,26 @@ final class Clubs {
 		}
 
 		return $club;
+	}
+
+	public static function get_nation() {
+		$nation = substr( self::get_id(), 0, 2 );
+
+		return $nation;
+	}
+
+	public static function get_id() {
+		$data    = self::get_data();
+		$club_id = is_array( $data ) ? array_keys( $data )['0'] : '';
+
+		return $club_id;
+	}
+
+	public static function get_data() {
+		$data = ( get_option( 'chessclub_settings' ) !== false )
+		? get_option( 'chessclub_settings' )
+		: '';
+
+		return $data;
 	}
 }
