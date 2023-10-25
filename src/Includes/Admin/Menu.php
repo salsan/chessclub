@@ -4,13 +4,25 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Admin;
 
+/**
+ *
+ *  Class Menu
+ *
+ * @package Salsan\Chessclub\Includes\Admin */
 class Menu {
-
+	/**
+	 *  List of menu items
+	 *
+	 * @var string[][]
+	 */
 	private $menu;
 
+	/**
+	 *
+	 *  Constructor method to initialize the class
+	 *
+	 * @return void  */
 	public function __construct() {
-
-		$this->plugin_path = MY_PLUGIN_PATH;
 
 		$this->menu = array(
 			array(
@@ -39,6 +51,11 @@ class Menu {
 			),
 		);
 	}
+	/**
+	 *
+	 *  Add menu items to WordPress Admin
+	 *
+	 * @return void  */
 	public function add_menu() {
 
 		foreach ( $this->menu as $item ) {
@@ -65,6 +82,11 @@ class Menu {
 		}
 	}
 
+	/**
+	 *
+	 *  Init menu to add on WordPress Admin
+	 *
+	 * @return void  */
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}

@@ -4,10 +4,25 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Admin;
 
+/**
+ *
+ *  Class Sections
+ *
+ * @package Salsan\Chessclub\Includes\Admin */
 class Sections {
-
+	/**
+	 *
+	 * List of sections
+	 *
+	 * @var array
+	 */
 	private $sections;
 
+	/**
+	 *
+	 * Constructor method to initialize the class
+	 *
+	 * @return void  */
 	public function __construct() {
 		$this->sections = array(
 			array(
@@ -21,6 +36,11 @@ class Sections {
 		add_action( 'admin_init', array( $this, 'add_section' ) );
 	}
 
+	/**
+	 *
+	 *  Add sections to page
+	 *
+	 *  @return void  */
 	public function add_section() {
 
 		foreach ( $this->sections as $section ) {
@@ -33,6 +53,11 @@ class Sections {
 		}
 	}
 
+	/**
+	 *
+	 *  Init sections to add on page
+	 *
+	 *  @return void  */
 	public function init() {
 		add_action( 'admin_init', array( $this, 'add_section' ) );
 	}

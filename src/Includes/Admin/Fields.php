@@ -4,10 +4,24 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Admin;
 
+/**
+ *
+ * Class Fields
+ *
+ * @package Salsan\Chessclub\Includes\Admin */
 class Fields {
-
+	/**
+	 * List of fields.
+	 *
+	 * @var array
+	 */
 	private $fields;
 
+	/**
+	 *
+	 * Constructor method to initialize the class.
+	 *
+	 * @return void  */
 	public function __construct() {
 		$this->fields = array(
 			array(
@@ -20,6 +34,11 @@ class Fields {
 		);
 	}
 
+	/**
+	 *
+	 *  Add fields on section
+	 *
+	 *  @return void  */
 	public function add_field() {
 
 		foreach ( $this->fields as $field ) {
@@ -33,6 +52,11 @@ class Fields {
 		}
 	}
 
+	/**
+	 *
+	 *   Init fields to add on section
+	 *
+	 *  @return void  */
 	public function init() {
 		add_action( 'admin_init', array( $this, 'add_field' ) );
 	}

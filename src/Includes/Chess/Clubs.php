@@ -13,10 +13,13 @@ namespace Salsan\Chessclub\Includes\Chess;
 final class Clubs {
 
 	/**
-	 * @param mixed $id
+	 *
+	 *  Init chess club data on database
+	 *
+	 * @param array $id club id.
 	 * @return mixed
 	 */
-	static function init( $id ) {
+	public static function init( $id ) {
 
 		if ( ! is_string( $id ) ) {
 			return $id;
@@ -34,6 +37,13 @@ final class Clubs {
 	}
 
 
+	/**
+	 *
+	 *  Download data from FederScacchi.it
+	 *
+	 * @param mixed $id chess club id.
+	 * @return array
+	 */
 	public static function get_clubs_it( $id ) {
 		$data         = new \Salsan\Clubs\Form();
 		$current_year = max( $data->getYears() );
@@ -76,12 +86,22 @@ final class Clubs {
 		return $club;
 	}
 
+	/**
+	 *
+	 * Get Federation Nation
+	 *
+	 * @return string  */
 	public static function get_nation() {
 		$nation = substr( self::get_id(), 0, 2 );
 
 		return $nation;
 	}
 
+	/**
+	 *
+	 *  Get id chess club
+	 *
+	 * @return int|string  */
 	public static function get_id() {
 		$data    = self::get_data();
 		$club_id = is_array( $data ) ? array_keys( $data )['0'] : '';
@@ -89,6 +109,11 @@ final class Clubs {
 		return $club_id;
 	}
 
+	/**
+	 *
+	 *  Get data from database
+	 *
+	 * @return mixed  */
 	public static function get_data() {
 		$data = ( get_option( 'chessclub_settings' ) !== false )
 		? get_option( 'chessclub_settings' )
