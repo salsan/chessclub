@@ -35,4 +35,23 @@ final class Html {
 
 		return $html;
 	}
+
+	public static function form_option_federation() {
+		$federations = array(
+			'IT' => 'Ferazione Scacchistica Italiana',
+		);
+
+		$html = '';
+
+		$nation = \Salsan\Chessclub\Includes\Chess\Clubs::get_nation();
+
+		foreach ( $federations as $id => $federation) {
+			$selected  = ( $nation === $id ) ? 'selected' : '';
+
+			$html .= '<option value="' . $id . '" ' . $selected . '>' . $federation . '</option>';
+
+		}
+
+		return $html;
+	}
 }

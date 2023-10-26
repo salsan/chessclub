@@ -27,7 +27,7 @@ class Sections {
 		$this->sections = array(
 			array(
 				'id'       => 'settings_section',
-				'title'    => 'Settings',
+				'title'    => '',
 				'callback' => 'Salsan\\Chessclub\\Includes\\Admin\\Pages::section_settings',
 				'page'     => 'chessclub_menu',
 			),

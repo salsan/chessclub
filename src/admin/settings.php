@@ -6,8 +6,8 @@
 	<form method="post" action="options.php">
 				<?php
 					settings_fields( 'chessclub_settings' );
-					do_settings_sections( 'chessclub_menu');
+					do_settings_sections( 'chessclub_menu' );
 					submit_button();
 				?>
-			</form>
-	</div>
+	</form>
+</div>

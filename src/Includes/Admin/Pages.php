@@ -32,6 +32,18 @@ final class Pages {
 
 	/**
 	 *
+	 *  Add comment to settings section page
+	 *
+	 * @return void  */
+
+	public static function nation_section() {
+
+		echo 'Choice Federation :';
+	}
+
+
+	/**
+	 *
 	 *  Load specific form option
 	 *
 	 * @return void  */
@@ -45,7 +57,7 @@ final class Pages {
 				require_once self::PLUGIN_PATH . '/admin/select-club-it.php';
 				break;
 			default:
-				require_once self::PLUGIN_PATH . '/admin/select-club-it.php';
+				require_once self::PLUGIN_PATH . '/admin/select-federation.php';
 				return;
 		}
 	}

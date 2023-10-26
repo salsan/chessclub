@@ -25,6 +25,14 @@ final class Clubs {
 			return $id;
 		}
 
+		if ( strlen( $id ) === 2 ) {
+			$current_year                  = date( 'Y' );
+			$club                          = array();
+			$club [ $id ][ $current_year ] = array();
+
+			return $club;
+		}
+
 		$nation    = substr( $id, 0, 2 );
 		$nation_id = substr( $id, 2 );
 
@@ -49,7 +57,12 @@ final class Clubs {
 		$current_year = max( $data->getYears() );
 		$first_year   = min( $data->getYears() );
 
-		$club      = array();
+		$club = array();
+
+		if ( strlen( $id ) === 2 ) {
+			return $club[ $id ][ $current_year ];
+		}
+
 		$nation_id = 'IT' . $id;
 
 		for ( $year = $current_year; $year >= $first_year; $year-- ) {
