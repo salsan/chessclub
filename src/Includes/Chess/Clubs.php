@@ -26,7 +26,7 @@ final class Clubs {
 		}
 
 		if ( strlen( $id ) === 2 ) {
-			$current_year                  = date( 'Y' );
+			$current_year                  = gmdate( 'Y' );
 			$club                          = array();
 			$club [ $id ][ $current_year ] = array();
 
