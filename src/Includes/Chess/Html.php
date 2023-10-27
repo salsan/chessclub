@@ -38,7 +38,11 @@ final class Html {
 
 	public static function form_option_federation() {
 		$federations = array(
-			'IT' => array(
+			'FIDE' => array(
+				'name' => 'FIDE - Fédération internationale des échecs',
+				'flag' => '🌐',
+			),
+			'IT'   => array(
 				'name' => 'Federazione Scacchistica Italiana',
 				'flag' => '🇮🇹',
 			),
@@ -51,7 +55,7 @@ final class Html {
 		foreach ( $federations as $id => $federation ) {
 			$selected = ( $nation === $id ) ? 'selected' : '';
 
-			$html .= '<option value="' . $id . '" ' . $selected . '> ' . $federation['flag'] . " - " . $federation['name'] . '</option>';
+			$html .= '<option value="' . $id . '" ' . $selected . '> ' . $federation['flag'] . ' - ' . $federation['name'] . '</option>';
 
 		}
 
