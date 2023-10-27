@@ -33,27 +33,45 @@ class Enqueue {
 		$this->items      = array(
 			array(
 				'handle' => 'form-js',
-				'src'    => $this->plugin_url . '/admin/js/form.js',
+				'src'    => $this->plugin_url . 'admin/js/form.js',
 				'deps'   => array(),
 				'ver'    => null,
 				'args'   => true,
 			),
+			array(
+				'handle' => 'admin-css',
+				'src'    => $this->plugin_url . 'admin/css/admin.css',
+				'deps'   => array(),
+				'ver'    => null,
+				'args'   => false,
+			),
+
 		);
 	}
 
 	/**
-	 * Load Admin Scripts
+	 * Load Admin Items
 	 *
 	 * @return void  */
-	public function load_scripts() {
+	public function load_items() {
 		foreach ( $this->items as $item ) {
-			wp_enqueue_script(
-				$item['handle'],
-				$item['src'],
-				$item['deps'],
-				$item['ver'],
-				$item['args'],
-			);
+			if ( strstr( $item['handle'], '-css' ) === false ) {
+				wp_enqueue_script(
+					$item['handle'],
+					$item['src'],
+					$item['deps'],
+					$item['ver'],
+					$item['args'],
+				);
+			} else {
+				wp_enqueue_style(
+					$item['handle'],
+					$item['src'],
+					$item['deps'],
+					$item['ver'],
+					$item['args'],
+				);
+			}
 		}
 	}
 
@@ -63,6 +81,6 @@ class Enqueue {
 	 *
 	 * @return void  */
 	public function init() {
-		add_action( 'admin_init', array( $this, 'load_scripts' ) );
+		add_action( 'admin_init', array( $this, 'load_items' ) );
 	}
 }
