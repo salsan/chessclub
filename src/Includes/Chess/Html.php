@@ -36,6 +36,11 @@ final class Html {
 		return $html;
 	}
 
+	/**
+	 *
+	 *  List Chess Federation
+	 *
+	 *  @return string  */
 	public static function form_option_federation() {
 		$federations = array(
 			'FIDE' => array(
