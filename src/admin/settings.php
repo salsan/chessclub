@@ -7,7 +7,7 @@
 				<?php
 					settings_fields( 'chessclub_settings' );
 					do_settings_sections( 'chessclub_menu' );
-					submit_button();
+					submit_button('Next' , 'btn-next');
 				?>
 	</form>
 </div>

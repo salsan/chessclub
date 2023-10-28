@@ -3,3 +3,15 @@
 select.federation {
 	font-family: 'Noto Color Emoji', sans-serif;
 }
+
+input.button.btn-next {
+	background: green;
+	color: white ;
+}
+
+input.button.btn-next:hover {
+	background: rgb(10, 136, 10);
+	color: white ;
+	border-color: yellow;
+}
+
