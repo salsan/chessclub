@@ -33,7 +33,15 @@ final class Html {
 			$html .= '<option value="' . $nation_id . '" ' . $selected . '>' . $index . ' - ' . $club . '</option>';
 		}
 
-		return $html;
+		return wp_kses(
+			$html,
+			array(
+				'option' => array(
+					'value'    => array(),
+					'selected' => array(),
+				),
+			),
+		);
 	}
 
 	/**
@@ -64,6 +72,14 @@ final class Html {
 
 		}
 
-		return $html;
+		return wp_kses(
+			$html,
+			array(
+				'option' => array(
+					'value'    => array(),
+					'selected' => array(),
+				),
+			),
+		);
 	}
 }
