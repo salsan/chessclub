@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
 
 	if (clubSelected) {
 		let button = document.querySelector('input#submit');
-		let buttonNameDefault = button.value;
+		let buttonNameDefault = 'Change';
 
 		button.style['backgroundColor'] = 'green';
 		button.value = 'Update';
