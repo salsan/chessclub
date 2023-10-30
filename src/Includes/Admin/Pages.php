@@ -35,7 +35,6 @@ final class Pages {
 	 *  Add comment to settings section page
 	 *
 	 * @return void  */
-
 	public static function nation_section() {
 
 		echo 'Choice Federation :';
