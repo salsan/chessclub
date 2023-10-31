@@ -13,8 +13,13 @@ window.addEventListener('load', function () {
 
 		document.querySelector('select').addEventListener('change', function () {
 			clubCurrent = document.querySelector('select#chessclub_settings');
-			button.style[['backgroundColor']] = (clubCurrent.value !== clubSelected.value) ? '' : 'green';
-			button.value = (clubCurrent.value !== clubSelected.value) ? buttonNameDefault : 'Update';
+			if (clubCurrent.value == '') {
+				button.style[['backgroundColor']] = 'red';
+				button.value = 'Reset';
+			} else {
+				button.style[['backgroundColor']] = (clubCurrent.value !== clubSelected.value) ? '' : 'green';
+				button.value = (clubCurrent.value !== clubSelected.value) ? buttonNameDefault : 'Update';
+			}
 		});
 
 		document.querySelector('form').addEventListener('submit', function (e) {
