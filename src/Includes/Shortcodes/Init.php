@@ -24,6 +24,7 @@ final class Init {
 			NumberMembersRookie::class,
 			PhoneNumber::class,
 			Website::class,
+			ListMembers::class
 		);
 	}
 
