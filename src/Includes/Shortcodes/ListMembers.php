@@ -61,8 +61,8 @@ class ListMembers {
 				$experience = $member['isRookie'] ? 'rookie' : 'expert';
 
 				$table .= '<tr>
-							<td>' . $member['name'] . '</td>
-							<td class=member-' . $experience . '>' . $member['category'] . '</td>
+							<td class=member-' . $experience . '>' . $member['name'] . '</td>
+							<td>' . $member['category'] . '</td>
 							<td class=flag-' . $this->replaceWithStandardSpace( $member['citizenship'] ) . '>' . $this->replaceWithStandardSpace( $member['citizenship'] ) . '</td>
 						</tr>';
 			}
