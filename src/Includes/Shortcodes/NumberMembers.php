@@ -31,8 +31,7 @@ class NumberMembers {
 	 * @return string
 	 */
 	public function shortcode_cc_number_members( $atts ): string {
-		$members_count = '';
-		$data          = get_option( 'chessclub_settings' );
+		$members = '';
 
 		$params = shortcode_atts(
 			array(
@@ -42,14 +41,8 @@ class NumberMembers {
 			$atts
 		);
 
-		if ( false !== $data ) {
-			$club_id       = array_keys( $data )['0'];
-			$year          = $params['year']
-					? $params['year']
-					: max( array_keys( $data[ $club_id ] ) );
-			$members_count = $data[ $club_id ][ $year ]['stats'][ $params['type'] ] ?? '';
-		}
+		$members = \Salsan\Chessclub\Includes\Chess\Clubs::get_number_members( $params['year'] )[ $params['type'] ] ?? '';
 
-		return sanitize_text_field( $members_count );
+		return sanitize_text_field( $members );
 	}
 }

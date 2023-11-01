@@ -27,9 +27,6 @@ class PhoneNumber {
 	 */
 	public function shortcode_cc_phone_number( $atts ): string {
 
-		$phone_number = '';
-		$data         = get_option( 'chessclub_settings' );
-
 		$params = shortcode_atts(
 			array(
 				'year' => '',
@@ -37,13 +34,7 @@ class PhoneNumber {
 			$atts
 		);
 
-		if ( false !== $data ) {
-			$club_id      = array_keys( $data )['0'];
-			$year         = $params['year']
-							? $params['year']
-							: max( array_keys( $data[ $club_id ] ) );
-			$phone_number = $data[ $club_id ][ $year ]['info']['contact']['tel'] ?? '';
-		}
+		$phone_number = \Salsan\Chessclub\Includes\Chess\Clubs::get_phone_number( $params['year'] ) ?? '';
 
 		return sanitize_text_field( $phone_number );
 	}

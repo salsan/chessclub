@@ -24,8 +24,6 @@ class Website {
 	 * @return string
 	 */
 	public function shortcode_cc_website( $atts ): string {
-		$website = '';
-		$data    = get_option( 'chessclub_settings' );
 
 		$params = shortcode_atts(
 			array(
@@ -34,13 +32,7 @@ class Website {
 			$atts
 		);
 
-		if ( false !== $data ) {
-			$club_id = array_keys( $data )['0'];
-			$year    = $params['year']
-					? $params['year']
-					: max( array_keys( $data[ $club_id ] ) );
-			$website = $data[ $club_id ][ $year ]['info']['website'] ?? '';
-		}
+		$website = \Salsan\Chessclub\Includes\Chess\Clubs::get_website( $params['year'] ) ?? '';
 
 		return sanitize_text_field( $website );
 	}

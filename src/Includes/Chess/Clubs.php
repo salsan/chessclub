@@ -134,4 +134,90 @@ final class Clubs {
 
 		return $data;
 	}
+
+	/**
+	 *
+	 *  Get phone number of club
+	 *
+	 * @param mixed $year is optional, default is current year.
+	 * @return mixed
+	 */
+	public static function get_phone_number( $year = '' ) {
+		$data         = self::get_data();
+		$phone_number = '';
+
+		if ( false !== $data ) {
+			$id = self::get_id();
+
+			$year = $year
+				? $year
+				: self::get_last_year();
+
+			$phone_number = $data[ $id ][ $year ]['info']['contact']['tel'] ?? '';
+		}
+
+		return $phone_number;
+	}
+
+	/**
+	 *
+	 *  Get the last available year of club data
+	 *
+	 *  @return string  */
+	public static function get_last_year() {
+		$data      = self::get_data();
+		$last_year = '';
+
+		if ( false !== $data ) {
+			$id        = self::get_id();
+			$last_year = max( array_keys( $data[ $id ] ) );
+		}
+		return $last_year;
+	}
+
+	/**
+	 *
+	 *  Get club website.
+	 *
+	 *   @param mixed $year is optional, default is current year.
+	 *
+	 *  @return string  */
+	public static function get_website( $year = '' ) {
+		$data    = self::get_data();
+		$website = '';
+
+		if ( false !== $data ) {
+			$club_id = self::get_id();
+			$year    = $year ? $year : self::get_last_year();
+
+			$website = $data[ $club_id ][ $year ]['info']['website'] ?? '';
+		}
+
+		return $website;
+	}
+
+	// public static function get_total_members( $year = '' ) {
+	// $data   = self::get_data();
+	// $result = '';
+
+	// if ( false !== $data ) {
+	// $club_id = self::get_id();
+	// $year    = $year ? $year : self::get_last_year();
+	// }
+
+	// return $result;
+	// }
+
+	public static function get_number_members( $year = '' ) {
+		$data    = self::get_data();
+		$members = array();
+
+		if ( false !== $data ) {
+			$club_id = self::get_id();
+			$year    = $year ? $year : self::get_last_year();
+			$members = $data[ $club_id ][ $year ]['stats'] ?? '';
+		}
+
+		return $members;
+	}
 }

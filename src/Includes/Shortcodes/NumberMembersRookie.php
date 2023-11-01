@@ -30,7 +30,7 @@ class NumberMembersRookie {
 	 * @return string
 	 */
 	public function shortcode_cc_number_members_rookie( $atts ): string {
-		$data = get_option( 'chessclub_settings' );
+		$rookie = '';
 
 		$params = shortcode_atts(
 			array(
@@ -39,15 +39,8 @@ class NumberMembersRookie {
 			$atts
 		);
 
-		if ( false !== $data ) {
-			$club_id = array_keys( $data )['0'];
-			$year    = $params['year']
-					? $params['year']
-					: max( array_keys( $data[ $club_id ] ) );
-		}
+		$rookie = \Salsan\Chessclub\Includes\Chess\Clubs::get_number_members( $params['year'] )['rookie'] ?? '';
 
-		$result = do_shortcode( '[cc_number_members id="' . $club_id . '" year="' . $year . '" type="rookie"]' );
-
-		return $result;
+		return sanitize_text_field( $rookie );
 	}
 }
