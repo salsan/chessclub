@@ -196,18 +196,6 @@ final class Clubs {
 		return $website;
 	}
 
-	// public static function get_total_members( $year = '' ) {
-	// $data   = self::get_data();
-	// $result = '';
-
-	// if ( false !== $data ) {
-	// $club_id = self::get_id();
-	// $year    = $year ? $year : self::get_last_year();
-	// }
-
-	// return $result;
-	// }
-
 	public static function get_number_members( $year = '' ) {
 		$data    = self::get_data();
 		$members = array();
