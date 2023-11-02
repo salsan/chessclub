@@ -196,6 +196,13 @@ final class Clubs {
 		return $website;
 	}
 
+	/**
+	 *
+	 * Return array with total number of members and rookie.
+	 *
+	 * @param string $year optional, default is current year.
+	 * @return mixed
+	 */
 	public static function get_number_members( $year = '' ) {
 		$data    = self::get_data();
 		$members = array();
