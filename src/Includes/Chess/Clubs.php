@@ -143,17 +143,15 @@ final class Clubs {
 	 * @return mixed
 	 */
 	public static function get_phone_number( $year = '' ) {
-		$data         = self::get_data();
+		$club = self::get_club();
+
 		$phone_number = '';
 
-		if ( false !== $data ) {
-			$id = self::get_id();
+		if ( ! empty( $club ) ) {
 
-			$year = $year
-				? $year
-				: self::get_last_year();
+			$year = $year ? $year : self::get_last_year();
 
-			$phone_number = $data[ $id ][ $year ]['info']['contact']['tel'] ?? '';
+			$phone_number = $club [ $year ]['info']['contact']['tel'] ?? '';
 		}
 
 		return $phone_number;
@@ -165,12 +163,12 @@ final class Clubs {
 	 *
 	 *  @return string  */
 	public static function get_last_year() {
-		$data      = self::get_data();
+		$club = self::get_club();
+
 		$last_year = '';
 
-		if ( false !== $data ) {
-			$id        = self::get_id();
-			$last_year = max( array_keys( $data[ $id ] ) );
+		if ( ! empty( $club ) ) {
+			$last_year = max( array_keys( $club ) );
 		}
 		return $last_year;
 	}
@@ -183,14 +181,14 @@ final class Clubs {
 	 *
 	 *  @return string  */
 	public static function get_website( $year = '' ) {
-		$data    = self::get_data();
+		$club = self::get_club();
+
 		$website = '';
 
-		if ( false !== $data ) {
-			$club_id = self::get_id();
-			$year    = $year ? $year : self::get_last_year();
+		if ( ! empty( $club ) ) {
+			$year = $year ? $year : self::get_last_year();
 
-			$website = $data[ $club_id ][ $year ]['info']['website'] ?? '';
+			$website = $club [ $year ]['info']['website'] ?? '';
 		}
 
 		return $website;
@@ -204,30 +202,49 @@ final class Clubs {
 	 * @return mixed
 	 */
 	public static function get_number_members( $year = '' ) {
-		$data    = self::get_data();
+		$club = self::get_club();
+
 		$members = array();
 
-		if ( false !== $data ) {
-			$club_id = self::get_id();
+		if ( ! empty( $club ) ) {
 			$year    = $year ? $year : self::get_last_year();
-			$members = $data[ $club_id ][ $year ]['stats'] ?? '';
+			$members = $club [ $year ]['stats'] ?? '';
 		}
 
 		return $members;
 	}
 
+	/**
+	 *
+	 *  Get array of members list based on year.
+	 *
+	 * @param string $year default value is current year.
+	 * @return mixed
+	 */
 	public static function get_members_list( $year = '' ) {
-		$data         = self::get_data();
+		$club = self::get_club();
+
 		$members_list = array();
 
-		if ( false !== $data ) {
-			$club_id = self::get_id();
-			$year    = $year ? $year : self::get_last_year();
+		if ( ! empty( $club ) ) {
+			$year = $year ? $year : self::get_last_year();
 
-			$members_list = $data[ $club_id ][ $year ]['members'] ?? array();
+			$members_list = $club [ $year ]['members'] ?? array();
 
 		}
 
 		return $members_list;
+	}
+
+	/**
+	 *
+	 * Get array data of chess club.
+	 *
+	 * @return mixed  */
+	public static function get_club() {
+		$data    = self::get_data();
+		$club_id = self::get_id();
+		$club    = $data[ $club_id ] ?? array();
+		return $club;
 	}
 }
