@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ruleset name="MyProject">
+    <description>My custom PHPCS ruleset for MyProject</description>
+
+	<file>src</file>
+	<file>index.php</file>
+
+	<!-- Show progress and sniff codes in all reports. -->
+	<arg value="ps"/>
+
+	<!-- A path to strip from the front of file paths inside reports. -->
+	<arg name="basepath" value="src"/>
+	<arg name="colors"/>
+	<arg name="extensions" value="php"/>
+
+    <!-- Use the WordPress standards -->
+    <rule ref="WordPress">
+        <!-- Optional: You can specify additional or custom rules here if necessary -->
+		<!-- Exclude as plugin adheres to the PSR-4 standard. -->
+		<exclude name="WordPress.Files.FileName"/>
+    </rule>
+
+    <arg name="extensions" value="php"/>
+
+    <!-- Exclude the "vendor" directory -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+</ruleset>
