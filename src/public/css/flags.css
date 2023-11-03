@@ -1,0 +1,836 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+
+[class^="flag-"]::before {
+    font-family: 'Noto Color Emoji', sans-serif;
+}
+/* South America  */
+.flag-ARG::before {
+    content: "🇦🇷";
+}
+
+.flag-BOL::before {
+    content: "🇧🇴";
+}
+
+.flag-BRA::before {
+    content: "🇧🇷";
+}
+
+.flag-CHL::before {
+    content: "🇨🇱";
+}
+
+.flag-COL::before {
+    content: "🇨🇴";
+}
+
+.flag-ECU::before {
+    content: "🇪🇨";
+}
+
+.flag-GUY::before {
+    content: "🇬🇾";
+}
+
+.flag-PER::before {
+    content: "🇵🇪";
+}
+
+.flag-PRY::before {
+    content: "🇵🇾";
+}
+
+.flag-SUR::before {
+    content: "🇸🇷";
+}
+
+.flag-URY::before {
+    content: "🇺🇾";
+}
+
+.flag-VEN::before {
+    content: "🇻🇪";
+}
+
+/* North America */
+.flag-ATG::before {
+    content: "🇦🇬";
+}
+
+.flag-BHS::before {
+    content: "🇧🇸";
+}
+
+.flag-BRB::before {
+    content: "🇧🇧";
+}
+
+.flag-BLZ::before {
+    content: "🇧🇿";
+}
+
+.flag-CAN::before {
+    content: "🇨🇦";
+}
+
+.flag-CRI::before {
+    content: "🇨🇷";
+}
+
+.flag-CUB::before {
+    content: "🇨🇺";
+}
+
+.flag-DMA::before {
+    content: "🇩🇲";
+}
+
+.flag-DOM::before {
+    content: "🇩🇴";
+}
+
+.flag-SLV::before {
+    content: "🇸🇻";
+}
+
+.flag-GRD::before {
+    content: "🇬🇩";
+}
+
+.flag-GTM::before {
+    content: "🇬🇹";
+}
+
+.flag-HTI::before {
+    content: "🇭🇹";
+}
+
+.flag-HND::before {
+    content: "🇭🇳";
+}
+
+.flag-JAM::before {
+    content: "🇯🇲";
+}
+
+.flag-MEX::before {
+    content: "🇲🇽";
+}
+
+.flag-NIC::before {
+    content: "🇳🇮";
+}
+
+.flag-PAN::before {
+    content: "🇵🇦";
+}
+
+.flag-KNA::before {
+    content: "🇰🇳";
+}
+
+.flag-LCA::before {
+    content: "🇱🇨";
+}
+
+.flag-VCT::before {
+    content: "🇻🇨";
+}
+
+.flag-TT::before {
+    content: "🇹🇹";
+}
+
+.flag-USA::before {
+    content: "🇺🇸";
+}
+
+/* Oceania  */
+.flag-ASM::before {
+    content: "🇦🇸";
+}
+
+.flag-AUS::before {
+    content: "🇦🇺";
+}
+
+.flag-COK::before {
+    content: "🇨🇰";
+}
+
+.flag-FJI::before {
+    content: "🇫🇯";
+}
+
+.flag-FSM::before {
+    content: "🇫🇲";
+}
+
+.flag-KIR::before {
+    content: "🇰🇮";
+}
+
+.flag-MHL::before {
+    content: "🇲🇭";
+}
+
+.flag-NRU::before {
+    content: "🇳🇷";
+}
+
+.flag-NCL::before {
+    content: "🇳🇨";
+}
+
+.flag-NZL::before {
+    content: "🇳🇿";
+}
+
+.flag-NIU::before {
+    content: "🇳🇺";
+}
+
+.flag-NFK::before {
+    content: "🇳🇫";
+}
+
+.flag-PLW::before {
+    content: "🇵🇼";
+}
+
+.flag-PNG::before {
+    content: "🇵🇬";
+}
+
+.flag-PCN::before {
+    content: "🇵🇳";
+}
+
+.flag-WSM::before {
+    content: "🇼🇸";
+}
+
+.flag-SLB::before {
+    content: "🇸🇧";
+}
+
+.flag-TON::before {
+    content: "🇹🇴";
+}
+
+.flag-TUV::before {
+    content: "🇹🇻";
+}
+
+.flag-VUT::before {
+    content: "🇻🇺";
+}
+
+.flag-WLF::before {
+    content: "🇼🇫";
+}
+
+/* Asia  */
+.flag-AFG::before {
+    content: "🇦🇫";
+}
+
+.flag-ARM::before {
+    content: "🇦🇲";
+}
+
+.flag-AZE::before {
+    content: "🇦🇿";
+}
+
+.flag-BHR::before {
+    content: "🇧🇭";
+}
+
+.flag-BGD::before {
+    content: "🇧🇩";
+}
+
+.flag-BTN::before {
+    content: "🇧🇹";
+}
+
+.flag-BRN::before {
+    content: "🇧🇳";
+}
+
+.flag-KHM::before {
+    content: "🇰🇭";
+}
+
+.flag-CHN::before {
+    content: "🇨🇳";
+}
+
+.flag-CXR::before {
+    content: "🇨🇽";
+}
+
+.flag-CYP::before {
+    content: "🇨🇾";
+}
+
+.flag-GEO::before {
+    content: "🇬🇪";
+}
+
+.flag-HKG::before {
+    content: "🇭🇰";
+}
+
+.flag-IND::before {
+    content: "🇮🇳";
+}
+
+.flag-IDN::before {
+    content: "🇮🇩";
+}
+
+.flag-IRN::before {
+    content: "🇮🇷";
+}
+
+.flag-IRQ::before {
+    content: "🇮🇶";
+}
+
+.flag-ISR::before {
+    content: "🇮🇱";
+}
+
+.flag-JPN::before {
+    content: "🇯🇵";
+}
+
+.flag-JOR::before {
+    content: "🇯🇴";
+}
+
+.flag-KAZ::before {
+    content: "🇰🇿";
+}
+
+.flag-KWT::before {
+    content: "🇰🇼";
+}
+
+.flag-KGZ::before {
+    content: "🇰🇬";
+}
+
+.flag-LAO::before {
+    content: "🇱🇦";
+}
+
+.flag-LBN::before {
+    content: "🇱🇧";
+}
+
+.flag-MAC::before {
+    content: "🇲🇴";
+}
+
+.flag-MYS::before {
+    content: "🇲🇾";
+}
+
+.flag-MDV::before {
+    content: "🇲🇻";
+}
+
+.flag-MNG::before {
+    content: "🇲🇳";
+}
+
+.flag-MMR::before {
+    content: "🇲🇲";
+}
+
+.flag-NPL::before {
+    content: "🇳🇵";
+}
+
+.flag-OMN::before {
+    content: "🇴🇲";
+}
+
+.flag-PAK::before {
+    content: "🇵🇰";
+}
+
+.flag-PHL::before {
+    content: "🇵🇭";
+}
+
+.flag-QAT::before {
+    content: "🇶🇦";
+}
+
+.flag-SAU::before {
+    content: "🇸🇦";
+}
+
+.flag-SGP::before {
+    content: "🇸🇬";
+}
+
+.flag-KOR::before {
+    content: "🇰🇷";
+}
+
+.flag-SRI::before,      /* FederScacchi */
+.flag-LKA::before {
+    content: "🇱🇰";
+}
+
+.flag-SYR::before {
+    content: "🇸🇾";
+}
+
+.flag-TWN::before {
+    content: "🇹🇼";
+}
+
+.flag-TJK::before {
+    content: "🇹🇯";
+}
+
+.flag-THA::before {
+    content: "🇹🇭";
+}
+
+.flag-TLS::before {
+    content: "🇹🇱";
+}
+
+.flag-TKM::before {
+    content: "🇹🇲";
+}
+
+.flag-ARE::before {
+    content: "🇦🇪";
+}
+
+.flag-UZB::before {
+    content: "🇺🇿";
+}
+
+.flag-VNM::before {
+    content: "🇻🇳";
+}
+
+.flag-YEM::before {
+    content: "🇾🇪";
+}
+
+.flag-TUR::before {
+    content: "🇹🇷";
+}
+
+/* Africa */
+.flag-DZA::before {
+    content: "🇩🇿";
+}
+
+.flag-AGO::before {
+    content: "🇦🇴";
+}
+
+.flag-BEN::before {
+    content: "🇧🇯";
+}
+
+.flag-BWA::before {
+    content: "🇧🇼";
+}
+
+.flag-BFA::before {
+    content: "🇧🇫";
+}
+
+.flag-BDI::before {
+    content: "🇧🇮";
+}
+
+.flag-CPV::before {
+    content: "🇨🇻";
+}
+
+.flag-CMR::before {
+    content: "🇨🇲";
+}
+
+.flag-CAF::before {
+    content: "🇨🇫";
+}
+
+.flag-TCD::before {
+    content: "🇹🇩";
+}
+
+.flag-COG::before {
+    content: "🇨🇬";
+}
+
+.flag-CIV::before {
+    content: "🇨🇮";
+}
+
+.flag-DJI::before {
+    content: "🇩🇯";
+}
+
+.flag-EGY::before {
+    content: "🇪🇬";
+}
+
+.flag-GNQ::before {
+    content: "🇬🇶";
+}
+
+.flag-ERI::before {
+    content: "🇪🇷";
+}
+
+.flag-ETH::before {
+    content: "🇪🇹";
+}
+
+.flag-GAB::before {
+    content: "🇬🇦";
+}
+
+.flag-GMB::before {
+    content: "🇬🇲";
+}
+
+.flag-GHA::before {
+    content: "🇬🇭";
+}
+
+.flag-GIN::before {
+    content: "🇬🇳";
+}
+
+.flag-GNB::before {
+    content: "🇬🇼";
+}
+
+.flag-KEN::before {
+    content: "🇰🇪";
+}
+
+.flag-LSO::before {
+    content: "🇱🇸";
+}
+
+.flag-LBR::before {
+    content: "🇱🇷";
+}
+
+.flag-LBY::before {
+    content: "🇱🇾";
+}
+
+.flag-MDG::before {
+    content: "🇲🇬";
+}
+
+.flag-MWI::before {
+    content: "🇲🇼";
+}
+
+.flag-MLI::before {
+    content: "🇲🇱";
+}
+
+.flag-MRT::before {
+    content: "🇲🇷";
+}
+
+.flag-MUS::before {
+    content: "🇲🇺";
+}
+
+.flag-MAR::before {
+    content: "🇲🇦";
+}
+
+.flag-MOZ::before {
+    content: "🇲🇿";
+}
+
+.flag-NAM::before {
+    content: "🇳🇦";
+}
+
+.flag-NER::before {
+    content: "🇳🇪";
+}
+
+.flag-NGA::before {
+    content: "🇳🇬";
+}
+
+.flag-REU::before {
+    content: "🇷🇪";
+}
+
+.flag-RWA::before {
+    content: "🇷🇼";
+}
+
+.flag-STP::before {
+    content: "🇸🇹";
+}
+
+.flag-SEN::before {
+    content: "🇸🇳";
+}
+
+.flag-SYC::before {
+    content: "🇸🇨";
+}
+
+.flag-SLE::before {
+    content: "🇸🇱";
+}
+
+.flag-SOM::before {
+    content: "🇸🇴";
+}
+
+.flag-ZAF::before {
+    content: "🇿🇦";
+}
+
+.flag-SSD::before {
+    content: "🇸🇸";
+}
+
+.flag-SDN::before {
+    content: "🇸🇩";
+}
+
+.flag-SWZ::before {
+    content: "🇸🇿";
+}
+
+.flag-TZA::before {
+    content: "🇹🇿";
+}
+
+.flag-TGO::before {
+    content: "🇹🇬";
+}
+
+.flag-TUN::before {
+    content: "🇹🇳";
+}
+
+.flag-UGA::before {
+    content: "🇺🇬";
+}
+
+.flag-ZMB::before {
+    content: "🇿🇲";
+}
+
+.flag-ZWE::before {
+    content: "🇿🇼";
+}
+
+/* Europe */
+.flag-ALA::before {
+    content: "🇦🇽";
+}
+
+.flag-ALB::before {
+    content: "🇦🇱";
+}
+
+.flag-AND::before {
+    content: "🇦🇩";
+}
+
+.flag-AUT::before {
+    content: "🇦🇹";
+}
+
+.flag-BLR::before {
+    content: "🇧🇾";
+}
+
+.flag-BEL::before {
+    content: "🇧🇪";
+}
+
+.flag-BIH::before {
+    content: "🇧🇦";
+}
+
+.flag-BGR::before {
+    content: "🇧🇬";
+}
+
+.flag-HRV::before {
+    content: "🇭🇷";
+}
+
+.flag-CYP::before {
+    content: "🇨🇾";
+}
+
+.flag-CZE::before {
+    content: "🇨🇿";
+}
+
+.flag-DNK::before {
+    content: "🇩🇰";
+}
+
+.flag-EST::before {
+    content: "🇪🇪";
+}
+
+.flag-FRO::before {
+    content: "🇫🇴";
+}
+
+.flag-FIN::before {
+    content: "🇫🇮";
+}
+
+.flag-FRA::before {
+    content: "🇫🇷";
+}
+
+.flag-DEU::before {
+    content: "🇩🇪";
+}
+
+.flag-GIB::before {
+    content: "🇬🇮";
+}
+
+.flag-GRC::before {
+    content: "🇬🇷";
+}
+
+.flag-HUN::before {
+    content: "🇭🇺";
+}
+
+.flag-ISL::before {
+    content: "🇮🇸";
+}
+
+.flag-IRL::before {
+    content: "🇮🇪";
+}
+
+.flag-ITA::before {
+    content: "🇮🇹";
+}
+
+.flag-LVA::before {
+    content: "🇱🇻";
+}
+
+.flag-LIE::before {
+    content: "🇱🇮";
+}
+
+.flag-LTU::before {
+    content: "🇱🇹";
+}
+
+.flag-LUX::before {
+    content: "🇱🇺";
+}
+
+.flag-MLT::before {
+    content: "🇲🇹";
+}
+
+.flag-MDA::before {
+    content: "🇲🇩";
+}
+
+.flag-MCO::before {
+    content: "🇲🇨";
+}
+
+.flag-MNE::before {
+    content: "🇲🇪";
+}
+
+.flag-NLD::before {
+    content: "🇳🇱";
+}
+
+.flag-NOR::before {
+    content: "🇳🇴";
+}
+
+.flag-POL::before {
+    content: "🇵🇱";
+}
+
+.flag-PRT::before {
+    content: "🇵🇹";
+}
+
+.flag-ROU::before {
+    content: "🇷🇴";
+}
+
+.flag-RUS::before {
+    content: "🇷🇺";
+}
+
+.flag-SMR::before {
+    content: "🇸🇲";
+}
+
+.flag-SRB::before {
+    content: "🇷🇸";
+}
+
+.flag-SVK::before {
+    content: "🇸🇰";
+}
+
+.flag-SVN::before {
+    content: "🇸🇮";
+}
+
+.flag-ESP::before {
+    content: "🇪🇸";
+}
+
+.flag-SWE::before {
+    content: "🇸🇪";
+}
+
+.flag-CHE::before {
+    content: "🇨🇭";
+}
+
+.flag-UKR::before {
+    content: "🇺🇦";
+}
+
+.flag-GBR::before {
+    content: "🇬🇧";
+}
+
+.flag-VAT::before {
+    content: "🇻🇦";
+}
+

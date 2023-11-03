@@ -33,10 +33,9 @@ class ListMembers {
 	 * @return string
 	 */
 	public function shortcode_cc_list_members( $atts ): string {
+		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_members_list();
 
-		$members_list = '';
-		$data         = get_option( 'chessclub_settings' );
-		$table        = '<table>
+		$table = '<table>
 		<tr>
 		  <th>Name</th>
 		  <th>Category</th>
@@ -50,20 +49,15 @@ class ListMembers {
 			$atts
 		);
 
-		if ( false !== $data ) {
-			$club_id      = array_keys( $data )['0'];
-			$year         = $params['year']
-						? $params['year']
-						: max( array_keys( $data[ $club_id ] ) );
-			$members_list = $data[ $club_id ][ $year ]['members'];
+		if ( ! empty( $members_list ) ) {
 
 			foreach ( $members_list as $id => $member ) {
 				$experience = $member['isRookie'] ? 'rookie' : 'expert';
 
 				$table .= '<tr>
-							<td class=member-' . $experience . '>' . $member['name'] . '</td>
+							<td class=member-' . $experience . ' id=' . $id . '>' . $member['name'] . '</td>
 							<td>' . $member['category'] . '</td>
-							<td class=flag-' . $this->replaceWithStandardSpace( $member['citizenship'] ) . '>' . $this->replaceWithStandardSpace( $member['citizenship'] ) . '</td>
+							<td class=flag-' . $this->replaceWithStandardSpace( $member['citizenship'] ) . '></td>
 						</tr>';
 			}
 		}
