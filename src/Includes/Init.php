@@ -21,6 +21,7 @@ final class Init {
 		return array(
 			'Shortcodes',
 			'Admin',
+			'Enqueue',
 		);
 	}
 
@@ -32,8 +33,19 @@ final class Init {
 	public static function init() {
 		foreach ( self::get_services() as $service ) {
 			if ( ! function_exists( $service ) ) {
-				$class = 'Salsan\\Chessclub\\Includes\\' . $service . '\\Init';
-				$class::init();
+
+				$class_name = 'Salsan\\Chessclub\\Includes\\' . $service . '\\Init';
+
+				if ( class_exists( $class_name ) ) {
+					$method = new \ReflectionMethod( $class_name, 'init' );
+
+					if ( $method->isStatic() ) {
+						$class_name::init();
+					} else {
+						$instance = new $class_name();
+						$instance->init();
+					}
+				}
 			}
 		}
 	}
