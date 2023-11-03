@@ -33,14 +33,6 @@ class ListMembers {
 	 * @return string
 	 */
 	public function shortcode_cc_list_members( $atts ): string {
-		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_members_list();
-
-		$table = '<table>
-		<tr>
-		  <th>Name</th>
-		  <th>Category</th>
-		  <th>Nation</th>
-		</tr>';
 
 		$params = shortcode_atts(
 			array(
@@ -49,7 +41,16 @@ class ListMembers {
 			$atts
 		);
 
+		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_members_list( $params[ 'year' ] );
+
 		if ( ! empty( $members_list ) ) {
+
+			$table = '<table>
+			<tr>
+			  <th>Name</th>
+			  <th>Category</th>
+			  <th>Nation</th>
+			</tr>';
 
 			foreach ( $members_list as $id => $member ) {
 				$experience = $member['isRookie'] ? 'rookie' : 'expert';
