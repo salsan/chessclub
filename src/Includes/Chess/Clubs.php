@@ -215,4 +215,19 @@ final class Clubs {
 
 		return $members;
 	}
+
+	public static function get_members_list( $year = '' ) {
+		$data         = self::get_data();
+		$members_list = array();
+
+		if ( false !== $data ) {
+			$club_id = self::get_id();
+			$year    = $year ? $year : self::get_last_year();
+
+			$members_list = $data[ $club_id ][ $year ]['members'] ?? array();
+
+		}
+
+		return $members_list;
+	}
 }
