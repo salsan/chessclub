@@ -25,6 +25,8 @@ final class Init {
 			PhoneNumber::class,
 			Website::class,
 			ListMembers::class,
+			ClubName::class,
+			Email::class,
 		);
 	}
 

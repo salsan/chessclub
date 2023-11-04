@@ -137,24 +137,63 @@ final class Clubs {
 
 	/**
 	 *
+	 *  Get name of chess club.
+	 *
+	 * @param string $year is optional, default is current year.
+	 * @return mixed
+	 */
+	public static function get_name( $year = '' ) {
+		$name = self::get_info( $year ) ['name'];
+
+		return $name;
+	}
+
+	/**
+	 *
+	 *  Get info about chess club.
+	 *
+	 * @param string $year is optional, default is current year.
+	 * @return mixed
+	 */
+	public static function get_info( $year = '' ) {
+		$club = self::get_club();
+
+		$info = array();
+
+		if ( ! empty( $club ) ) {
+			$year = $year ? $year : self::get_last_year();
+
+			$info = $club [ $year ]['info'] ?? '';
+		}
+
+		return $info;
+	}
+	/**
+	 *
 	 *  Get phone number of club
 	 *
 	 * @param mixed $year is optional, default is current year.
 	 * @return mixed
 	 */
 	public static function get_phone_number( $year = '' ) {
-		$club = self::get_club();
 
-		$phone_number = '';
-
-		if ( ! empty( $club ) ) {
-
-			$year = $year ? $year : self::get_last_year();
-
-			$phone_number = $club [ $year ]['info']['contact']['tel'] ?? '';
-		}
+		$phone_number = self::get_info( $year )['contact']['tel'] ?? '';
 
 		return $phone_number;
+	}
+
+	/**
+	 *
+	 *  Get email of club.
+	 *
+	 * @param string $year is optional, default is current year.
+	 * @return mixed
+	 */
+	public static function get_email( $year = '' ) {
+
+		$email = self::get_info( $year )['contact']['email'] ?? '';
+
+		return $email;
 	}
 
 	/**
@@ -181,15 +220,8 @@ final class Clubs {
 	 *
 	 *  @return string  */
 	public static function get_website( $year = '' ) {
-		$club = self::get_club();
 
-		$website = '';
-
-		if ( ! empty( $club ) ) {
-			$year = $year ? $year : self::get_last_year();
-
-			$website = $club [ $year ]['info']['website'] ?? '';
-		}
+		$website = self::get_info( $year )['website'] ?? '';
 
 		return $website;
 	}
