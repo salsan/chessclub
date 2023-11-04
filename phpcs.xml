@@ -20,8 +20,10 @@
 		<exclude name="WordPress.Files.FileName"/>
     </rule>
 
-    <arg name="extensions" value="php"/>
-
     <!-- Exclude the "vendor" directory -->
     <exclude-pattern>vendor/*</exclude-pattern>
+	<!-- Exclude index.php file -->
+	 <rule ref="Squiz.Commenting.FileComment.WrongStyle">
+	   <exclude-pattern>index.php</exclude-pattern>
+	 </rule>
 </ruleset>
