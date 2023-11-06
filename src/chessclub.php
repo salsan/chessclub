@@ -56,4 +56,4 @@ function init(): void {
 	}
 }
 
-add_action( 'init', 'Salsan\Chessclub\init' );
+add_action( 'plugins_loaded', 'Salsan\Chessclub\init' );
