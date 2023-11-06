@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
 
-	let clubSelected = document.querySelector('option[selected]');
+	let clubSelected = document.querySelector('select#chessclub_settings > option[selected]');
 	let clubCurrent = document.querySelector('select#chessclub_settings');
 
 
