@@ -10,7 +10,7 @@ namespace Salsan\Chessclub\Includes;
  *
  * @package Salsan\Chessclub\Includes
  */
-final class Init {
+class Init {
 
 	/**
 	 * Store all services inside an array
@@ -22,6 +22,7 @@ final class Init {
 			'Shortcodes',
 			'Admin',
 			'Enqueue',
+			'Widgets',
 		);
 	}
 
@@ -43,7 +44,7 @@ final class Init {
 						$class_name::init();
 					} else {
 						$instance = new $class_name();
-						$instance->init();
+						$instance->init( $class_name );
 					}
 				}
 			}
