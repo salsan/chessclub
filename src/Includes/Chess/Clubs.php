@@ -198,6 +198,26 @@ final class Clubs {
 
 	/**
 	 *
+	 *  Get address of chess club.
+	 *
+	 * @param string $year is optional, default is current year.
+	 * @return array
+	 */
+	public static function get_address( $year = '' ) {
+
+		$address = self::get_info( $year )['address'] ?? '';
+
+		$address = array(
+			'postal_code' => $address['postal_code'] ?? '',
+			'street'      => $address['street'] ?? '',
+			'city'        => $address['city'] ?? '',
+		);
+
+		return $address;
+	}
+
+	/**
+	 *
 	 *  Get the last available year of club data
 	 *
 	 *  @return string  */
