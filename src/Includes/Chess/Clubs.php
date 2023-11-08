@@ -234,6 +234,19 @@ final class Clubs {
 
 	/**
 	 *
+	 *
+	 *  Get the years data avaible.
+	 *
+	 * @return array  */
+	public static function get_years() {
+		$data  = new \Salsan\Clubs\Form();
+		$years = $data->getYears();
+
+		return $years;
+	}
+
+	/**
+	 *
 	 *  Get club website.
 	 *
 	 *   @param mixed $year is optional, default is current year.

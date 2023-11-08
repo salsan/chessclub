@@ -21,6 +21,7 @@ class Init {
 	public function get_widgets() {
 		return array(
 			ClubAddress::class,
+			ListMembers::class,
 		);
 	}
 
