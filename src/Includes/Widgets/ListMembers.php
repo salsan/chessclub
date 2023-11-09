@@ -98,6 +98,7 @@ class ListMembers extends \WP_Widget {
 		);
 
 		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_members_list( $instance['years'] );
+		$table        = '';
 
 		if ( ! empty( $members_list ) ) {
 
@@ -119,7 +120,7 @@ class ListMembers extends \WP_Widget {
 			}
 		}
 
-		$table .= '</table>';
+		$table .= '' === $table ? '' : '</table>';
 
 		echo wp_kses(
 			$table,
