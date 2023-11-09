@@ -20,8 +20,7 @@ final class Clubs {
 	 * @return mixed
 	 */
 	public static function init( $id ) {
-
-		if ( ! is_string( $id ) ) {
+		if ( ! is_string( $id ) || empty( $id ) ) {
 			return $id;
 		}
 
@@ -33,7 +32,7 @@ final class Clubs {
 			return $club;
 		}
 
-		$nation    = substr( $id, 0, 2 );
+		$nation    = self::get_nation( $id );
 		$nation_id = substr( $id, 2 );
 
 		switch ( $nation ) {
@@ -44,7 +43,6 @@ final class Clubs {
 		}
 	}
 
-
 	/**
 	 *
 	 *  Download data from FederScacchi.it
@@ -53,6 +51,10 @@ final class Clubs {
 	 * @return array
 	 */
 	public static function get_clubs_it( $id ) {
+		if ( empty( $id ) ) {
+			return;
+		}
+
 		$data         = new \Salsan\Clubs\Form();
 		$current_year = max( $data->getYears() );
 		$first_year   = min( $data->getYears() );
@@ -103,9 +105,17 @@ final class Clubs {
 	 *
 	 * Get Federation Nation
 	 *
+	 * @param string optional $id chess club id.
 	 * @return string  */
-	public static function get_nation() {
-		$nation = substr( self::get_id(), 0, 2 );
+	public static function get_nation( $id = '' ) {
+
+		$nation = '';
+
+		if ( ! empty( $id ) ) {
+			$nation = substr( $id, 0, 2 );
+		} else {
+			$nation = substr( self::get_id(), 0, 2 );
+		}
 
 		return $nation;
 	}
@@ -143,7 +153,7 @@ final class Clubs {
 	 * @return mixed
 	 */
 	public static function get_name( $year = '' ) {
-		$name = self::get_info( $year ) ['name'];
+		$name = self::get_info( $year ) ['name'] ?? '';
 
 		return $name;
 	}
