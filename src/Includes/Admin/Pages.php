@@ -51,13 +51,13 @@ final class Pages {
 		$nation = \Salsan\Chessclub\Includes\Chess\Clubs::get_nation();
 
 		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 .
-		switch ( $nation ) {
-			case 'IT':
-				require_once self::PLUGIN_PATH . '/admin/select-club-it.php';
-				break;
-			default:
-				require_once self::PLUGIN_PATH . '/admin/select-federation.php';
-				return;
+
+		$federation = self::PLUGIN_PATH . '/admin/select-club-' . $nation . '.php';
+
+		if ( file_exists( $federation ) ) {
+			require_once $federation;
+		} else {
+			require_once self::PLUGIN_PATH . '/admin/select-federation.php';
 		}
 	}
 
