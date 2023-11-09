@@ -26,4 +26,8 @@
 	 <rule ref="Squiz.Commenting.FileComment.WrongStyle">
 	   <exclude-pattern>index.php</exclude-pattern>
 	 </rule>
+	<!--- Exclude admin page escape check-->
+	 <rule ref="WordPress.Security.EscapeOutput.OutputNotEscaped">
+	   <exclude-pattern>admin/*</exclude-pattern>
+	 </rule>
 </ruleset>
