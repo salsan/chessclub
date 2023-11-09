@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/salsan/Clubs.git",
-                "reference": "26c9794d6129a34d225756a138d35d5cc027cd60"
+                "reference": "f1aadeedc7d23ab16b49f24a1744f6aaad281756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/salsan/Clubs/zipball/26c9794d6129a34d225756a138d35d5cc027cd60",
-                "reference": "26c9794d6129a34d225756a138d35d5cc027cd60",
+                "url": "https://api.github.com/repos/salsan/Clubs/zipball/f1aadeedc7d23ab16b49f24a1744f6aaad281756",
+                "reference": "f1aadeedc7d23ab16b49f24a1744f6aaad281756",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "issues": "https://github.com/salsan/Clubs/issues",
                 "source": "https://github.com/salsan/Clubs/tree/main"
             },
-            "time": "2023-10-09T07:49:09+00:00"
+            "time": "2023-11-09T15:05:40+00:00"
         },
         {
             "name": "salsan/members",
@@ -504,5 +504,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.6.0"
 }
