@@ -16,6 +16,8 @@ use Salsan\Utils\String\HiddenSpaceTrait;
 class ListMembers extends \WP_Widget {
 	use HiddenSpaceTrait;
 
+	const PLUGIN_PATH = MY_PLUGIN_PATH;
+
 	/**
 	 * Constructs id attributes for use in WP_Widget::form() fields.
 	 *
@@ -48,15 +50,17 @@ class ListMembers extends \WP_Widget {
 		$selected_year = $instance['years'] ?? '';
 		$is_selected   = $selected_year === $years ? 'selected' : '';
 
-		echo '<label for="' . esc_attr( $this->get_field_id( 'years' ) ) . '">Year</label>';
-		echo '<select id="' . esc_attr( $this->get_field_id( 'years' ) ) . '" class="widefat" name="' . esc_attr( $this->get_field_name( 'years' ) ) . '">';
-		echo '<option value=""' . esc_attr( $is_selected ) . '> Current</option>';
+		include self::PLUGIN_PATH . 'admin/widgets/form-list-members-select.php';
+
 		foreach ( $years as $year ) {
 			$is_selected = $selected_year === $year ? 'selected' : '';
 
-			echo '<option value="' . esc_attr( $year ) . '"' . esc_attr( $is_selected ) . '>' . esc_attr( $year ) . '</option>';
+			include self::PLUGIN_PATH . 'admin/widgets/form-list-members-select-option.php';
 		}
-		echo '</select>';
+
+		?>
+		</select>
+		<?php
 	}
 	/**
 	 * Updates a particular instance of a widget.
