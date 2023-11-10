@@ -35,11 +35,10 @@ final class Clubs {
 		$nation    = self::get_nation( $id );
 		$nation_id = substr( $id, 2 );
 
-		switch ( $nation ) {
-			case 'IT':
-				return self::get_clubs_it( $nation_id );
-			default:
-				break;
+		$get_clubs = 'get_clubs_' . strtolower( $nation );
+
+		if ( method_exists( self::class, $get_clubs ) ) {
+			return call_user_func( array( self::class, $get_clubs ), $nation_id );
 		}
 	}
 
