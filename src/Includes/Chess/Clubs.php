@@ -55,9 +55,8 @@ final class Clubs {
 			return;
 		}
 
-		$data         = new \Salsan\Clubs\Form();
-		$current_year = max( $data->getYears() );
-		$first_year   = min( $data->getYears() );
+		$current_year = Fsi::get_last_year();
+		$first_year   = Fsi::get_first_year();
 
 		$club = array();
 
@@ -245,12 +244,13 @@ final class Clubs {
 	/**
 	 *
 	 *
-	 *  Get the years data avaible.
+	 *  Get the years data avaible for club.
 	 *
 	 * @return array  */
 	public static function get_years() {
-		$data  = new \Salsan\Clubs\Form();
-		$years = $data->getYears();
+		$club = self::get_club();
+
+		$years = array_keys( $club ) ?? array();
 
 		return $years;
 	}
