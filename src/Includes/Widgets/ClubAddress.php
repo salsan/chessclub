@@ -19,6 +19,7 @@ class ClubAddress extends \WP_Widget {
 
 	public $address = array();
 
+	const PLUGIN_PATH = MY_PLUGIN_PATH;
 
 	/**
 	 * Constructs id attributes for use in WP_Widget::form() fields.
@@ -87,20 +88,7 @@ class ClubAddress extends \WP_Widget {
 		$city        = ! empty( $instance['address']['city'] ) ? $instance['address']['city'] : $this->address['city'];
 		$postal_code = ! empty( $instance['address']['postal_code'] ) ? $instance['address']['postal_code'] : $this->address['postal_code'];
 
-		echo '<p>';
-		echo '<label for="' . esc_attr( $this->get_field_id( 'street' ) ) . '">Street:</label>';
-		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'street' ) ) . '" name="' . esc_attr( $this->get_field_name( 'address[street]' ) ) . '" type="text" value="' . esc_attr( $street ) . '">';
-		echo '</p>';
-
-		echo '<p>';
-		echo '<label for="' . esc_attr( $this->get_field_id( 'city' ) ) . '">City:</label>';
-		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'city' ) ) . '" name="' . esc_attr( $this->get_field_name( 'address[city]' ) ) . '" type="text" value="' . esc_attr( $city ) . '">';
-		echo '</p>';
-
-		echo '<p>';
-		echo '<label for="' . esc_attr( $this->get_field_id( 'postal_code' ) ) . '">Postal Code:</label>';
-		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'postal_code' ) ) . '" name="' . esc_attr( $this->get_field_name( 'address[postal_code]' ) ) . '" type="text" value="' . esc_attr( $postal_code ) . '">';
-		echo '</p>';
+		require self::PLUGIN_PATH . 'admin/widgets/form-club-address.php';
 	}
 
 	/**
