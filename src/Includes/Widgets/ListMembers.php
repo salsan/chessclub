@@ -53,7 +53,7 @@ class ListMembers extends \WP_Widget {
 		include self::PLUGIN_PATH . 'admin/widgets/form-list-members-select.php';
 
 		foreach ( $years as $year ) {
-			$is_selected = $selected_year === $year ? 'selected' : '';
+			$is_selected = $selected_year === (string) $year ? 'selected' : '';
 
 			include self::PLUGIN_PATH . 'admin/widgets/form-list-members-select-option.php';
 		}
