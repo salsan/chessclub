@@ -84,7 +84,9 @@ final class Fsi {
 		);
 
 		foreach ( $query->getList() as $member_id => $member ) {
-			$members[ $member_id ] = array(
+			$nation_id = 'IT-' . $member_id;
+
+			$members[ $nation_id ] = array(
 				'name'           => $member['name'] ?? '',
 				'isRookie'       => $member['isRookie'] ?? '',
 				'year_subscribe' => $member['year_subscribe'] ?? '',
