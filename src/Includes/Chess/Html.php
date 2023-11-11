@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Chess;
 
+use Salsan\Chessclub\Includes\Chess\Clubs;
+
 /**
  *
  *
@@ -22,7 +24,7 @@ final class Html {
 
 		$list = new \Salsan\Clubs\Listing();
 
-		$club_id = \Salsan\Chessclub\Includes\Chess\Clubs::get_id();
+		$club_id = Clubs::get_id();
 
 		$html = '';
 
@@ -52,18 +54,18 @@ final class Html {
 	public static function form_option_federation() {
 		$federations = array(
 			'FIDE' => array(
-				'name' => 'FIDE - Fédération internationale des échecs',
+				'name' => 'FIDE	- Fédération internationale des échecs',
 				'flag' => '🌐',
 			),
 			'IT'   => array(
-				'name' => 'Federazione Scacchistica Italiana',
+				'name' => 'FSI	- Federazione Scacchistica Italiana',
 				'flag' => '🇮🇹',
 			),
 		);
 
 		$html = '';
 
-		$nation = \Salsan\Chessclub\Includes\Chess\Clubs::get_nation();
+		$nation = Clubs::get_nation( Clubs::get_id() );
 
 		foreach ( $federations as $id => $federation ) {
 			$selected = ( $nation === $id ) ? 'selected' : '';
