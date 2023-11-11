@@ -19,10 +19,8 @@ final class Clubs {
 	 * @param array $id club id.
 	 * @return mixed
 	 */
-	public static function init( $id ) {
-		if ( ! is_string( $id ) || empty( $id ) ) {
-			return $id;
-		}
+	public static function init( $options ) {
+		$id = $options['id'];
 
 		if ( strlen( $id ) === 2 ) {
 			$current_year                  = gmdate( 'Y' );
@@ -40,6 +38,8 @@ final class Clubs {
 		if ( method_exists( self::class, $get_clubs ) ) {
 			return call_user_func( array( self::class, $get_clubs ), $nation_id );
 		}
+
+		return $id;
 	}
 
 	/**
@@ -66,28 +66,21 @@ final class Clubs {
 		$nation_id = 'IT' . $id;
 
 		for ( $year = $current_year; $year >= $first_year; $year-- ) {
-			$query     = new \Salsan\Clubs\Query(
-				array(
-					'clubId' => $id,
-					'year'   => $year,
-				)
+			$params = array(
+				'id'   => $id,
+				'year' => $year,
 			);
-			$club_info = $query->getInfo();
 
-			if ( count( $club_info ) > 0 ) {
-				$members = new \Salsan\Members\Query(
-					array(
-						'clubId'         => $id,
-						'membershipYear' => $year,
-					)
-				);
+			$club_info = Fsi::get_club_info( $params );
 
-				$list                    = $members->getList();
-				list ( $total, $rookie ) = array_values( $members->getNumber() );
+			if ( ! empty( $club_info ) ) {
+				$members = Fsi::get_club_members_list( $params );
+
+				list( $total, $rookie) = array_values( Fsi::get_club_members_stats( $params ) );
 
 				$club[ $nation_id ][ $year ] = array(
-					'info'    => $club_info[ $id ],
-					'members' => $list,
+					'info'    => $club_info,
+					'members' => $members,
 					'stats'   => array(
 						'total'  => $total,
 						'rookie' => $rookie,

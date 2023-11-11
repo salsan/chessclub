@@ -48,4 +48,72 @@ final class Fsi {
 
 		return $min_years;
 	}
+
+	/**
+	 * @param mixed $param
+	 * @return mixed
+	 */
+	public static function get_club_info( $param ) {
+		list( 'id' => $id, 'year' => $year) = $param;
+
+		$query = new \Salsan\Clubs\Query(
+			array(
+				'clubId' => $id,
+				'year'   => $year,
+			)
+		);
+
+		$info = $query->getInfo()[ $id ] ?? array();
+
+		return $info;
+	}
+
+	/**
+	 * @param mixed $param
+	 * @return array
+	 */
+	public static function get_club_members_list( $param ) {
+		list( 'id' => $id, 'year' => $year) = $param;
+		$members                            = array();
+
+		$query = new \Salsan\Members\Query(
+			array(
+				'clubId'         => $id,
+				'membershipYear' => $year,
+			)
+		);
+
+		foreach ( $query->getList() as $member_id => $member ) {
+			$members[ $member_id ] = array(
+				'name'           => $member['name'] ?? '',
+				'isRookie'       => $member['isRookie'] ?? '',
+				'year_subscribe' => $member['year_subscribe'] ?? '',
+				'gender'         => $member['gender'] ?? '',
+				'birthday'       => $member['birthday'] ?? '',
+				'category'       => $member['category'] ?? '',
+				'province'       => $member['province'] ?? '',
+				'region'         => $member['region'] ?? '',
+				'citizenship'    => $member['citizenship'] ?? '',
+				'card_number'    => $member['card_number'] ?? '',
+			);
+		}
+
+		return $members;
+	}
+
+	public static function get_club_members_stats( $param ) {
+		list( 'id' => $id, 'year' => $year) = $param;
+		$stats                              = array();
+
+		$query = new \Salsan\Members\Query(
+			array(
+				'clubId'         => $id,
+				'membershipYear' => $year,
+			)
+		);
+
+		$stats = $query->getNumber();
+
+		return $stats;
+	}
 }
