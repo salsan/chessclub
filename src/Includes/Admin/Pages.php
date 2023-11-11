@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Salsan\Chessclub\Includes\Admin;
 
+use Salsan\Chessclub\Includes\Chess\Clubs;
+
 /**
  *
  *  Class Pages
@@ -48,7 +50,7 @@ final class Pages {
 	 * @return void  */
 	public static function field_settings_select_club() {
 
-		$nation = \Salsan\Chessclub\Includes\Chess\Clubs::get_nation();
+		$nation = Clubs::get_nation( Clubs::get_id() );
 
 		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 .
 
