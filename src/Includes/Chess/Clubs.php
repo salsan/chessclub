@@ -22,7 +22,7 @@ final class Clubs {
 	public static function init( $options ) {
 		$id = $options['id'];
 
-		if ( strlen( $id ) === 2 ) {
+		if ( strlen( $id ) <= 4 ) {
 			$current_year                  = gmdate( 'Y' );
 			$club                          = array();
 			$club [ $id ][ $current_year ] = array();
@@ -102,11 +102,9 @@ final class Clubs {
 
 		$nation = '';
 
-		if ( ! empty( $id ) ) {
-			$nation = substr( $id, 0, 2 );
-		} else {
-			$nation = substr( self::get_id(), 0, 2 );
-		}
+		preg_match( '/^([A-Z]{2,4})(?:-(\d+))?/', $id, $value );
+
+		$nation = $value[1] ?? '';
 
 		return $nation;
 	}
