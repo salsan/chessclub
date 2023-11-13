@@ -16,12 +16,39 @@ final class Clubs {
 	 *
 	 *  Init chess club data on database
 	 *
-	 * @param array $id club id.
+	 * @param array $options array with $id and $year.
 	 * @return mixed
 	 */
 	public static function init( $options ) {
-		$id = $options['id'];
+		$id     = $options['id'] ?? '';
+		$id_old = self::get_id( $id ) ?? '';
 
+		if ( empty( $id ) ) {
+			return;
+		}
+
+		$nation_id  = substr( $id, 2 );
+		$federation = self::get_federation( $id );
+		$class_name = 'Salsan\\Chessclub\\Includes\\Chess\\' . $federation;
+
+		// Update last year data.
+		if ( $id === $id_old ) {
+			$last_year    = self::get_last_year();
+			$club [ $id ] = self::get_club();
+
+			$options = array(
+				'id'   => $nation_id,
+				'year' => $last_year,
+			);
+
+			if ( class_exists( $class_name ) ) {
+				$club [ $id ] [ $last_year ] = $class_name::get_club_update( $options );
+			}
+
+			return $club;
+		}
+
+		// Set Chess Federation.
 		if ( strlen( $id ) <= 4 ) {
 			$current_year                  = gmdate( 'Y' );
 			$club                          = array();
@@ -30,13 +57,8 @@ final class Clubs {
 			return $club;
 		}
 
-		$nation    = self::get_nation( $id );
-		$nation_id = substr( $id, 2 );
-
-		$get_clubs = 'get_clubs_' . strtolower( $nation );
-
-		if ( method_exists( self::class, $get_clubs ) ) {
-			return call_user_func( array( self::class, $get_clubs ), $nation_id );
+		if ( class_exists( $class_name ) ) {
+			return $class_name::get_club( $nation_id );
 		}
 
 		return $id;
@@ -44,52 +66,19 @@ final class Clubs {
 
 	/**
 	 *
-	 *  Download data from FederScacchi.it
+	 *  Get Chess Federation
 	 *
 	 * @param mixed $id chess club id.
-	 * @return array
+	 * @return string
 	 */
-	public static function get_clubs_it( $id ) {
-		if ( empty( $id ) ) {
-			return;
-		}
+	public static function get_federation( $id ) {
+		$nation = self::get_nation( $id );
 
-		$current_year = Fsi::get_last_year();
-		$first_year   = Fsi::get_first_year();
+		$federation = array(
+			'IT' => 'Fsi',
+		);
 
-		$club = array();
-
-		if ( strlen( $id ) === 2 ) {
-			return $club[ $id ][ $current_year ];
-		}
-
-		$nation_id = 'IT' . $id;
-
-		for ( $year = $current_year; $year >= $first_year; $year-- ) {
-			$params = array(
-				'id'   => $id,
-				'year' => $year,
-			);
-
-			$club_info = Fsi::get_club_info( $params );
-
-			if ( ! empty( $club_info ) ) {
-				$members = Fsi::get_club_members_list( $params );
-
-				list( $total, $rookie) = array_values( Fsi::get_club_members_stats( $params ) );
-
-				$club[ $nation_id ][ $year ] = array(
-					'info'    => $club_info,
-					'members' => $members,
-					'stats'   => array(
-						'total'  => $total,
-						'rookie' => $rookie,
-					),
-				);
-			}
-		}
-
-		return $club;
+		return $federation[ $nation ] ?? '';
 	}
 
 	/**
@@ -102,9 +91,10 @@ final class Clubs {
 
 		$nation = '';
 
-		preg_match( '/^([A-Z]{2,4})(?:-(\d+))?/', $id, $value );
-
-		$nation = $value[1] ?? '';
+		if ( ! empty( $id ) ) {
+			preg_match( '/^([A-Z]{2,4})(?:-(\d+))?/', $id, $value );
+			$nation = $value[1] ?? '';
+		}
 
 		return $nation;
 	}
@@ -116,7 +106,7 @@ final class Clubs {
 	 * @return int|string  */
 	public static function get_id() {
 		$data    = self::get_data();
-		$club_id = is_array( $data ) ? array_keys( $data )['0'] : '';
+		$club_id = ( ! empty( $data ) ) ? array_keys( $data )['0'] : '';
 
 		return $club_id;
 	}
@@ -243,6 +233,30 @@ final class Clubs {
 		$years = array_keys( $club ) ?? array();
 
 		return $years;
+	}
+
+	/**
+	 *
+	 * Get last year data avaible for club.
+	 *
+	 * @return mixed */
+	public static function get_year_last() {
+
+		$year = max( self::get_years() );
+
+		return $year;
+	}
+
+	/**
+	 *
+	 * Get first year data avaible for club.
+	 *
+	 * @return mixed  */
+	public static function get_year_first() {
+
+		$year = min( self::get_years() );
+
+		return $year;
 	}
 
 	/**
