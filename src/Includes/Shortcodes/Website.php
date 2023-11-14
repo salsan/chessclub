@@ -32,7 +32,7 @@ class Website {
 			$atts
 		);
 
-		$website = \Salsan\Chessclub\Includes\Chess\Clubs::get_website( $params['year'] ) ?? '';
+		$website = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_website( $params['year'] ) ?? '';
 
 		return sanitize_text_field( $website );
 	}

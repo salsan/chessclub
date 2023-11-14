@@ -41,7 +41,7 @@ class NumberMembers {
 			$atts
 		);
 
-		$members = \Salsan\Chessclub\Includes\Chess\Clubs::get_number_members( $params['year'] )[ $params['type'] ] ?? '';
+		$members = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_number_members( $params['year'] )[ $params['type'] ] ?? '';
 
 		return sanitize_text_field( $members );
 	}

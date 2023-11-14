@@ -24,7 +24,7 @@ final class Html {
 
 		$list = new \Salsan\Clubs\Listing();
 
-		$club_id = Clubs::get_id();
+		$club_id = Clubs::get_club_id();
 
 		$html = '';
 
@@ -65,7 +65,7 @@ final class Html {
 
 		$html = '';
 
-		$nation = Clubs::get_nation( Clubs::get_id() );
+		$nation = Clubs::get_nation( Clubs::get_club_id() );
 
 		foreach ( $federations as $id => $federation ) {
 			$selected = ( $nation === $id ) ? 'selected' : '';

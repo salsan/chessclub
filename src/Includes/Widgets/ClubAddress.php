@@ -39,7 +39,7 @@ class ClubAddress extends \WP_Widget {
 			array( 'description' => 'Chess Club Address Widget' )
 		);
 
-		$this->address = \Salsan\Chessclub\Includes\Chess\Clubs::get_address();
+		$this->address = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_address();
 	}
 
 	/**

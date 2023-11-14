@@ -34,7 +34,7 @@ class PhoneNumber {
 			$atts
 		);
 
-		$phone_number = \Salsan\Chessclub\Includes\Chess\Clubs::get_phone_number( $params['year'] ) ?? '';
+		$phone_number = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_phone_number( $params['year'] ) ?? '';
 
 		return sanitize_text_field( $phone_number );
 	}

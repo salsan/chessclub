@@ -39,7 +39,7 @@ class NumberMembersTotal {
 			$atts
 		);
 
-		$total = \Salsan\Chessclub\Includes\Chess\Clubs::get_number_members( $params['year'] )['total'] ?? '';
+		$total = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_number_members( $params['year'] )['total'] ?? '';
 
 		return sanitize_text_field( $total );
 	}

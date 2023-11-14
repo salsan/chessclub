@@ -50,7 +50,7 @@ final class Pages {
 	 * @return void  */
 	public static function field_settings_select_club() {
 
-		$nation = Clubs::get_nation( Clubs::get_id() );
+		$nation = Clubs::get_nation( Clubs::get_club_id() );
 
 		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 .
 

@@ -39,7 +39,7 @@ class NumberMembersRookie {
 			$atts
 		);
 
-		$rookie = \Salsan\Chessclub\Includes\Chess\Clubs::get_number_members( $params['year'] )['rookie'] ?? '';
+		$rookie = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_number_members( $params['year'] )['rookie'] ?? '';
 
 		return sanitize_text_field( $rookie );
 	}

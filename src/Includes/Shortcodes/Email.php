@@ -32,7 +32,7 @@ class Email {
 			$atts
 		);
 
-		$email = \Salsan\Chessclub\Includes\Chess\Clubs::get_email( $params['year'] ) ?? '';
+		$email = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_email( $params['year'] ) ?? '';
 
 		return sanitize_text_field( $email );
 	}

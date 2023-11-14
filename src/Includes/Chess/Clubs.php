@@ -21,19 +21,19 @@ final class Clubs {
 	 */
 	public static function init( $options ) {
 		$id     = $options['id'] ?? '';
-		$id_old = self::get_id( $id ) ?? '';
+		$id_old = self::get_club_id( $id ) ?? '';
 
 		if ( empty( $id ) ) {
 			return;
 		}
 
-		$nation_id  = self::get_nation_id( $id );
+		$nation_id  = self::get_club_nation_id( $id );
 		$federation = self::get_federation( $id );
 		$class_name = 'Salsan\\Chessclub\\Includes\\Chess\\' . $federation;
 
 		// Update last year data.
 		if ( $id === $id_old ) {
-			$last_year    = self::get_last_year();
+			$last_year    = self::get_club_last_year();
 			$club [ $id ] = self::get_club();
 
 			$options = array(
@@ -107,7 +107,7 @@ final class Clubs {
 	 * @param string $id Optional chess club id.
 	 * @return string
 	 */
-	public static function get_nation_id( $id = '' ) {
+	public static function get_club_nation_id( $id = '' ) {
 		$nation_id = '';
 
 		if ( ! empty( $id ) ) {
@@ -123,8 +123,8 @@ final class Clubs {
 	 *  Get id chess club
 	 *
 	 * @return int|string  */
-	public static function get_id() {
-		$data    = self::get_data();
+	public static function get_club_id() {
+		$data    = self::get_club_data();
 		$club_id = ( ! empty( $data ) ) ? array_keys( $data )['0'] : '';
 
 		return $club_id;
@@ -135,7 +135,7 @@ final class Clubs {
 	 *  Get data from database
 	 *
 	 * @return mixed  */
-	public static function get_data() {
+	public static function get_club_data() {
 		$data = ( get_option( 'chessclub_settings' ) !== false )
 		? get_option( 'chessclub_settings' )
 		: '';
@@ -150,8 +150,8 @@ final class Clubs {
 	 * @param string $year is optional, default is current year.
 	 * @return mixed
 	 */
-	public static function get_name( $year = '' ) {
-		$name = self::get_info( $year ) ['name'] ?? '';
+	public static function get_club_name( $year = '' ) {
+		$name = self::get_club_info( $year ) ['name'] ?? '';
 
 		return $name;
 	}
@@ -163,13 +163,13 @@ final class Clubs {
 	 * @param string $year is optional, default is current year.
 	 * @return mixed
 	 */
-	public static function get_info( $year = '' ) {
+	public static function get_club_info( $year = '' ) {
 		$club = self::get_club();
 
 		$info = array();
 
 		if ( ! empty( $club ) ) {
-			$year = $year ? $year : self::get_last_year();
+			$year = $year ? $year : self::get_club_last_year();
 
 			$info = $club [ $year ]['info'] ?? '';
 		}
@@ -183,9 +183,9 @@ final class Clubs {
 	 * @param mixed $year is optional, default is current year.
 	 * @return mixed
 	 */
-	public static function get_phone_number( $year = '' ) {
+	public static function get_club_phone_number( $year = '' ) {
 
-		$phone_number = self::get_info( $year )['contact']['tel'] ?? '';
+		$phone_number = self::get_club_info( $year )['contact']['tel'] ?? '';
 
 		return $phone_number;
 	}
@@ -197,9 +197,9 @@ final class Clubs {
 	 * @param string $year is optional, default is current year.
 	 * @return mixed
 	 */
-	public static function get_email( $year = '' ) {
+	public static function get_club_email( $year = '' ) {
 
-		$email = self::get_info( $year )['contact']['email'] ?? '';
+		$email = self::get_club_info( $year )['contact']['email'] ?? '';
 
 		return $email;
 	}
@@ -211,9 +211,9 @@ final class Clubs {
 	 * @param string $year is optional, default is current year.
 	 * @return array
 	 */
-	public static function get_address( $year = '' ) {
+	public static function get_club_address( $year = '' ) {
 
-		$address = self::get_info( $year )['address'] ?? '';
+		$address = self::get_club_info( $year )['address'] ?? '';
 
 		$address = array(
 			'postal_code' => $address['postal_code'] ?? '',
@@ -229,7 +229,7 @@ final class Clubs {
 	 *  Get the last available year of club data
 	 *
 	 *  @return string  */
-	public static function get_last_year() {
+	public static function get_club_last_year() {
 		$club = self::get_club();
 
 		$last_year = '';
@@ -246,7 +246,7 @@ final class Clubs {
 	 *  Get the years data avaible for club.
 	 *
 	 * @return array  */
-	public static function get_years() {
+	public static function get_club_years() {
 		$club = self::get_club();
 
 		$years = array_keys( $club ) ?? array();
@@ -259,9 +259,9 @@ final class Clubs {
 	 * Get last year data avaible for club.
 	 *
 	 * @return mixed */
-	public static function get_year_last() {
+	public static function get_club_year_last() {
 
-		$year = max( self::get_years() );
+		$year = max( self::get_club_years() );
 
 		return $year;
 	}
@@ -273,7 +273,7 @@ final class Clubs {
 	 * @return mixed  */
 	public static function get_year_first() {
 
-		$year = min( self::get_years() );
+		$year = min( self::get_club_years() );
 
 		return $year;
 	}
@@ -285,9 +285,9 @@ final class Clubs {
 	 *   @param mixed $year is optional, default is current year.
 	 *
 	 *  @return string  */
-	public static function get_website( $year = '' ) {
+	public static function get_club_website( $year = '' ) {
 
-		$website = self::get_info( $year )['website'] ?? '';
+		$website = self::get_club_info( $year )['website'] ?? '';
 
 		return $website;
 	}
@@ -299,13 +299,13 @@ final class Clubs {
 	 * @param string $year optional, default is current year.
 	 * @return mixed
 	 */
-	public static function get_number_members( $year = '' ) {
+	public static function get_club_number_members( $year = '' ) {
 		$club = self::get_club();
 
 		$members = array();
 
 		if ( ! empty( $club ) ) {
-			$year    = $year ? $year : self::get_last_year();
+			$year    = $year ? $year : self::get_club_last_year();
 			$members = $club [ $year ]['stats'] ?? '';
 		}
 
@@ -319,13 +319,13 @@ final class Clubs {
 	 * @param string $year default value is current year.
 	 * @return mixed
 	 */
-	public static function get_members_list( $year = '' ) {
+	public static function get_club_members_list( $year = '' ) {
 		$club = self::get_club();
 
 		$members_list = array();
 
 		if ( ! empty( $club ) ) {
-			$year = $year ? $year : self::get_last_year();
+			$year = $year ? $year : self::get_club_last_year();
 
 			$members_list = $club [ $year ]['members'] ?? array();
 
@@ -340,8 +340,8 @@ final class Clubs {
 	 *
 	 * @return mixed  */
 	public static function get_club() {
-		$data    = self::get_data();
-		$club_id = self::get_id();
+		$data    = self::get_club_data();
+		$club_id = self::get_club_id();
 		$club    = $data[ $club_id ] ?? array();
 		return $club;
 	}

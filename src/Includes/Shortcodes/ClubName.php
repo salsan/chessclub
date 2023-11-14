@@ -32,7 +32,7 @@ class ClubName {
 			$atts
 		);
 
-		$club_name = \Salsan\Chessclub\Includes\Chess\Clubs::get_name( $params['year'] ) ?? '';
+		$club_name = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_name( $params['year'] ) ?? '';
 
 		return sanitize_text_field( $club_name );
 	}

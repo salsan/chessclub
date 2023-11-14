@@ -46,7 +46,7 @@ class ListMembers extends \WP_Widget {
 	 * @return void
 	 */
 	public function form( $instance ) {
-		$years         = \Salsan\Chessclub\Includes\Chess\Clubs::get_years();
+		$years         = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_years();
 		$selected_year = $instance['years'] ?? '';
 		$is_selected   = $selected_year === $years ? 'selected' : '';
 
@@ -101,7 +101,7 @@ class ListMembers extends \WP_Widget {
 			),
 		);
 
-		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_members_list( $instance['years'] );
+		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_members_list( $instance['years'] );
 		$table        = '';
 
 		if ( ! empty( $members_list ) ) {

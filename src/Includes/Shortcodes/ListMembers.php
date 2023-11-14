@@ -41,7 +41,7 @@ class ListMembers {
 			$atts
 		);
 
-		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_members_list( $params['year'] );
+		$members_list = \Salsan\Chessclub\Includes\Chess\Clubs::get_club_members_list( $params['year'] );
 		$table        = '';
 
 		if ( ! empty( $members_list ) ) {
