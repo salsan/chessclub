@@ -100,6 +100,13 @@ final class Clubs {
 	}
 
 
+	/**
+	 *
+	 *  Get nation id of chess club
+	 *
+	 * @param string $id Optional chess club id.
+	 * @return string
+	 */
 	public static function get_nation_id( $id = '' ) {
 		$nation_id = '';
 
