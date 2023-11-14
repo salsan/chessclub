@@ -21,7 +21,7 @@ final class Clubs {
 	 */
 	public static function init( $options ) {
 		$id     = $options['id'] ?? '';
-		$id_old = self::get_club_id( $id ) ?? '';
+		$id_old = self::get_club_id() ?? '';
 
 		if ( empty( $id ) ) {
 			return;
@@ -48,20 +48,14 @@ final class Clubs {
 			return $club;
 		}
 
-		// Set Chess Federation.
-		if ( strlen( $id ) <= 4 ) {
-			$current_year                  = gmdate( 'Y' );
-			$club                          = array();
-			$club [ $id ][ $current_year ] = array();
-
-			return $club;
+		if ( empty( $nation_id ) ) {
+			$last_year = self::get_club_last_year();
+			return array( $id => array() );
 		}
 
 		if ( class_exists( $class_name ) ) {
 			return $class_name::get_club( $nation_id );
 		}
-
-		return $id;
 	}
 
 	/**
