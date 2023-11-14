@@ -27,7 +27,7 @@ final class Clubs {
 			return;
 		}
 
-		$nation_id  = substr( $id, 2 );
+		$nation_id  = self::get_nation_id( $id );
 		$federation = self::get_federation( $id );
 		$class_name = 'Salsan\\Chessclub\\Includes\\Chess\\' . $federation;
 
@@ -97,6 +97,18 @@ final class Clubs {
 		}
 
 		return $nation;
+	}
+
+
+	public static function get_nation_id( $id = '' ) {
+		$nation_id = '';
+
+		if ( ! empty( $id ) ) {
+			preg_match( '/^([A-Z]{2,4})-{0,1}(\d+)?/', $id, $value );
+			$nation_id = $value[2] ?? '';
+		}
+
+		return $nation_id;
 	}
 
 	/**
