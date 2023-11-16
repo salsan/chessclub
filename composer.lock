@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d912fbae9c4038dfcb23535cbf66787",
+    "content-hash": "b8dafc2e03b30274bd77d1d8993ea5e4",
     "packages": [
         {
             "name": "salsan/clubs",
-            "version": "dev-main",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/salsan/Clubs.git",
@@ -27,7 +27,6 @@
             "require-dev": {
                 "phpunit/phpunit": "9.5.27"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -54,7 +53,7 @@
             ],
             "support": {
                 "issues": "https://github.com/salsan/Clubs/issues",
-                "source": "https://github.com/salsan/Clubs/tree/main"
+                "source": "https://github.com/salsan/Clubs/tree/1.0.0"
             },
             "time": "2023-11-09T15:05:40+00:00"
         },
@@ -497,7 +496,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "salsan/utils": 20,
-        "salsan/clubs": 20,
         "salsan/members": 20
     },
     "prefer-stable": false,
