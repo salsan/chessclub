@@ -22,7 +22,7 @@ final class Html {
 	 * @return string  */
 	public static function form_option_club_it() {
 
-		$list = new \Salsan\Clubs\Listing();
+		$list = new \Salsan\Clubs\Fsi\Listing();
 
 		$club_id = Clubs::get_club_id();
 

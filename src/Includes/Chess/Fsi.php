@@ -114,7 +114,7 @@ final class Fsi {
 	 *
 	 * @return array  */
 	public static function get_years() {
-		$data  = new \Salsan\Clubs\Form();
+		$data  = new \Salsan\Clubs\Fsi\Form();
 		$years = $data->getYears();
 
 		return $years;
@@ -156,7 +156,7 @@ final class Fsi {
 	public static function get_club_info( $param ) {
 		list( 'id' => $id, 'year' => $year) = $param;
 
-		$query = new \Salsan\Clubs\Query(
+		$query = new \Salsan\Clubs\Fsi\Query(
 			array(
 				'clubId' => $id,
 				'year'   => $year,

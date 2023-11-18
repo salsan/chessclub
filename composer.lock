@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8dafc2e03b30274bd77d1d8993ea5e4",
+    "content-hash": "8d912fbae9c4038dfcb23535cbf66787",
     "packages": [
         {
             "name": "salsan/clubs",
-            "version": "1.0.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/salsan/Clubs.git",
-                "reference": "f1aadeedc7d23ab16b49f24a1744f6aaad281756"
+                "reference": "8e871ce3bcbbcca9d86a6dcab7db30adbb088107"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/salsan/Clubs/zipball/f1aadeedc7d23ab16b49f24a1744f6aaad281756",
-                "reference": "f1aadeedc7d23ab16b49f24a1744f6aaad281756",
+                "url": "https://api.github.com/repos/salsan/Clubs/zipball/8e871ce3bcbbcca9d86a6dcab7db30adbb088107",
+                "reference": "8e871ce3bcbbcca9d86a6dcab7db30adbb088107",
                 "shasum": ""
             },
             "require": {
@@ -27,6 +27,7 @@
             "require-dev": {
                 "phpunit/phpunit": "9.5.27"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -53,9 +54,9 @@
             ],
             "support": {
                 "issues": "https://github.com/salsan/Clubs/issues",
-                "source": "https://github.com/salsan/Clubs/tree/1.0.0"
+                "source": "https://github.com/salsan/Clubs/tree/main"
             },
-            "time": "2023-11-09T15:05:40+00:00"
+            "time": "2023-11-18T08:54:07+00:00"
         },
         {
             "name": "salsan/members",
@@ -496,6 +497,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "salsan/utils": 20,
+        "salsan/clubs": 20,
         "salsan/members": 20
     },
     "prefer-stable": false,

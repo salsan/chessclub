@@ -16,7 +16,7 @@
     ],
     "require": {
         "salsan/utils": "dev-main",
-        "salsan/clubs": "~1.0.0",
+        "salsan/clubs": "dev-main",
         "salsan/members": "dev-main"
     },
     "config": {
