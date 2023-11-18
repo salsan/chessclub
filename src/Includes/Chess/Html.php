@@ -46,6 +46,38 @@ final class Html {
 		);
 	}
 
+		/**
+	 *
+	 *  List of chess club
+	 *
+	 * @return string  */
+	public static function form_option_club_fr() {
+
+		$list = new \Salsan\Clubs\Ffe\Listing();
+
+		$html = '';
+
+		foreach ( $list->clubs() as $club ) {
+			$nation_id = 'FR' . $index;
+			// $selected  = ( $nation_id === $club_id ) ? 'selected' : '';
+			$selected  = '';
+
+			$html .= '<option value="' . $club. '" ' . $selected . '>' . $club . '</option>';
+		}
+
+		return wp_kses(
+			$html,
+			array(
+				'option' => array(
+					'value'    => array(),
+					'selected' => array(),
+				),
+			),
+		);
+	}
+
+
+
 	/**
 	 *
 	 *  List Chess Federation
@@ -54,13 +86,18 @@ final class Html {
 	public static function form_option_federation() {
 		$federations = array(
 			'FIDE' => array(
-				'name' => 'FIDE	- Fédération internationale des échecs',
+				'name' => 'FIDE	Fédération internationale des échecs',
 				'flag' => '🌐',
 			),
 			'IT'   => array(
-				'name' => 'FSI	- Federazione Scacchistica Italiana',
+				'name' => 'FSI Federazione Scacchistica Italiana',
 				'flag' => '🇮🇹',
 			),
+			'FR'   => array(
+				'name' => 'FFE Fédération Française des Échecs',
+				'flag' => '🇫🇷',
+			),
+
 		);
 
 		$html = '';
