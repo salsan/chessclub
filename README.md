@@ -9,8 +9,17 @@ Chess Club Plugin for WordPress: Effortlessly Integrate Your Chess Club's Data i
 - Import Data from [FSI](https://federscacchi.it/)
 
 
-## Installation
-Copy [**src**](https://download-directory.github.io/?url=https://github.com/salsan/chessclub/tree/main/src) folder to **wp-content\plugins** directory
+## Instructions
+Downloads and installs all the libraries and dependencies outlined in that file
+
+```bash
+composer install
+npm install
+```
+## Required
+
+- Docker - https://www.docker.com/
+- wp-env - https://www.npmjs.com/package/@wordpress/env
 
 
 ## Bug Reports
