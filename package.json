@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/salsan/Chess-Club#readme",
   "devDependencies": {
-    "browser-sync": "^2.29.3",
+    "browser-sync": "^3.0.4",
     "gulp": "^4.0.2"
   }
 }
